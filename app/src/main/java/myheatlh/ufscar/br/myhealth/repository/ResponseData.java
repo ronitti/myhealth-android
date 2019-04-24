@@ -10,6 +10,8 @@ public class ResponseData {
     private String message;
     @SerializedName("success")
     private boolean success;
+    @SerializedName("userData")
+    private User userData;
 
     public String getMessage() {
         return message;
@@ -27,13 +29,13 @@ public class ResponseData {
         this.success = success;
     }
 
-    @SerializedName("userData")
-    //private User userData;
+    public User getUserData() {
+        return userData;
+    }
 
-
-
-
-
+    public void setUserData(User userData) {
+        this.userData = userData;
+    }
 
     @Override
     public String toString() {

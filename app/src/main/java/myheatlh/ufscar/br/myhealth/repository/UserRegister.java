@@ -22,6 +22,6 @@ public class UserRegister {
             throw new ExistingEmailException();
         }
 
-        return false;
+        return true;
     }
 }

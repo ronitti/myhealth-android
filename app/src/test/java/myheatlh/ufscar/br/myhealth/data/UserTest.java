@@ -23,7 +23,7 @@ public class UserTest {
 
     @Test
     public void shouldRegisterNewUserProperly(){
-        assertTrue(UserRegister.register("novo@novo.com", "novo"));
+        assertTrue(UserRegister.register("novo1@novo.com", "novo"));
     }
 
     /**
@@ -43,14 +43,14 @@ public class UserTest {
      */
     @Test (expected = NonRegisteredUserException.class)
     public void shouldNotAuthenticateNonRegisteredUser(){
-        assertTrue(UserLogin.login("1234", "senha"));
+        UserLogin.login("1234", "senha");
     }
     @Test (expected = WrongPasswordException.class)
     public void shouldNotAuthenticateUserWithWrongPassword(){
-        assertTrue(UserLogin.login("5678", "senha"));
+        assertTrue(UserLogin.login("novo@novo.com", "senha"));
     }
     @Test
     public void shouldAuthenticateUserProperly(){
-        assertTrue(UserLogin.login("5678", "password"));
+        assertTrue(UserLogin.login("teste@teste.com", "teste"));
     }
 }

@@ -17,5 +17,5 @@ public interface MyHealthService {
     Call<ResponseData> signUp(@Body User user);
 
     @POST("user/signIn")
-    Call<User> signIn();
+    Call<ResponseData> signIn(@Body User user);
 }
