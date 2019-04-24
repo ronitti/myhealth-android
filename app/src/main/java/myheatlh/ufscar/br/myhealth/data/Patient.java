@@ -8,6 +8,10 @@ public class Patient extends User{
     private String placeOfBirth;
     private Address address;
 
+    public Patient(String email, String password) {
+        super(email, password);
+    }
+
     public String getSus_number() {
         return sus_number;
     }

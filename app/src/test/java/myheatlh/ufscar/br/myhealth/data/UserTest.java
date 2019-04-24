@@ -17,8 +17,10 @@ public class UserTest {
      */
     @Test(expected = ExistingEmailException.class)
     public void shouldNotRegisterAnExistingEmail(){
-        assertTrue(UserRegister.register("teste@teste.com", "teste"));
+        UserRegister.register("teste@teste.com", "teste");
     }
+
+
     @Test
     public void shouldRegisterNewUserProperly(){
         assertTrue(UserRegister.register("novo@novo.com", "novo"));
