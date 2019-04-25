@@ -3,6 +3,8 @@ package myhealth.ufscar.br.myhealth.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import myhealth.ufscar.br.myhealth.R;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
