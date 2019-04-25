@@ -10,7 +10,7 @@
     
     
     <style name="AppTheme.RoundedCornerMaterialButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:background">@drawable/rounded_shape</item>
+        <item name="android:background">@drawable/button_default</item>
         <item name="android:textAllCaps">false</item>
     </style>
 

@@ -43,7 +43,7 @@
         />
 
 
-    <android.support.design.button.MaterialButton
+    <Button
         android:id="@+id/signin_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,13 +67,14 @@
             android:text="@string/is_new_user"
             android:layout_marginEnd="10dp"/>
 
-        <android.support.design.button.MaterialButton
+        <Button
             android:id="@+id/signup_action"
+            style="@style/AppTheme.RoundedCornerMaterialButtonBorder"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="@string/action_sign_up_short"
             android:paddingHorizontal="30dp"
-            style="@style/AppTheme.RoundedCornerMaterialButtonBorder"/>
+            />
 
 
     </LinearLayout>
