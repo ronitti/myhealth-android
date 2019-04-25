@@ -1,12 +1,21 @@
 package myheatlh.ufscar.br.myhealth.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Address {
+    @SerializedName("postCode")
     private String postcode;
+    @SerializedName("thoroughfare")
     private String thoroughfare;
+    @SerializedName("neighborhood")
     private String neighborhood;
+    @SerializedName("number")
     private Integer number;
+    @SerializedName("complement")
     private String complement;
+    @SerializedName("city")
     private String city;
+    @SerializedName("state")
     private String state;
 
     public String getPostcode() {

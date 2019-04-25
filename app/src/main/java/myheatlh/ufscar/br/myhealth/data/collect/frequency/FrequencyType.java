@@ -1,4 +1,4 @@
-package myheatlh.ufscar.br.myhealth.data;
+package myheatlh.ufscar.br.myhealth.data.collect.frequency;
 
 public enum FrequencyType {
     DAILY(0),

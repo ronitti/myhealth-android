@@ -2,21 +2,29 @@ package myheatlh.ufscar.br.myhealth.repository;
 
 import java.util.List;
 
+import myheatlh.ufscar.br.myhealth.data.Patient;
 import myheatlh.ufscar.br.myhealth.data.User;
+import myheatlh.ufscar.br.myhealth.repository.query.PatientLoadRequest;
+import myheatlh.ufscar.br.myhealth.repository.query.PatientLoadResponse;
+import myheatlh.ufscar.br.myhealth.repository.query.UserLoadResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface MyHealthService {
 
-    @GET("user/list")
-    Call<List<User>> listUsers();
-
     @POST("user/signUp")
-    Call<ResponseData> signUp(@Body User user);
+    Call<UserLoadResponse> signUp(@Body User user);
 
     @POST("user/signIn")
-    Call<ResponseData> signIn(@Body User user);
+    Call<UserLoadResponse> signIn(@Body User user);
 
+    @POST("user/delete")
+    Call<UserLoadResponse> deleteUser(@Body User user);
+
+    @POST("patient/create")
+    Call<UserLoadResponse> createPatient(@Body Patient patient);
+
+    @POST("patient/load")
+    Call<PatientLoadResponse> loadPatient(@Body PatientLoadRequest request);
 }

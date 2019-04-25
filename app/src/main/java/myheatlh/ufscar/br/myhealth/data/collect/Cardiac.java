@@ -1,4 +1,4 @@
-package myheatlh.ufscar.br.myhealth.data;
+package myheatlh.ufscar.br.myhealth.data.collect;
 
 public class Cardiac extends Register {
     private Float systolicPressure;

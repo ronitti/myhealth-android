@@ -1,23 +1,33 @@
 package myheatlh.ufscar.br.myhealth.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Patient extends User{
-    private String sus_number;
+    @SerializedName("susNumber")
+    private String susNumber;
+    @SerializedName("name")
     private String name;
+    @SerializedName("dateOfBirth")
     private String dateOfBirth;
+    @SerializedName("gender")
     private Character gender;
+    @SerializedName("placeOfBirth")
     private String placeOfBirth;
+    @SerializedName("mothersName")
+    private String mothersName;
+    @SerializedName("address")
     private Address address;
 
     public Patient(String email, String password) {
         super(email, password);
     }
 
-    public String getSus_number() {
-        return sus_number;
+    public String getSusNumber() {
+        return susNumber;
     }
 
-    public void setSus_number(String sus_number) {
-        this.sus_number = sus_number;
+    public void setSusNumber(String susNumber) {
+        this.susNumber = susNumber;
     }
 
     public String getName() {
@@ -50,6 +60,14 @@ public class Patient extends User{
 
     public void setPlaceOfBirth(String placeOfBirth) {
         this.placeOfBirth = placeOfBirth;
+    }
+
+    public String getMothersName() {
+        return mothersName;
+    }
+
+    public void setMothersName(String mothersName) {
+        this.mothersName = mothersName;
     }
 
     public Address getAddress() {
