@@ -1,9 +1,9 @@
-package myheatlh.ufscar.br.myhealth.ui;
+package myhealth.ufscar.br.myhealth.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import myheatlh.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
