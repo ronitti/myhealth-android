@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context=".ui.LoginActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:padding="30dp"
+        android:textSize="40sp"
+        android:textColor="@color/darkGray"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/text_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:hint="@string/prompt_email"
+        android:autofillHints="@string/prompt_email"
+        style="@style/AppTheme.EditTextWithBorder"
+        android:inputType="textEmailAddress"
+        />
+
+    <EditText
+        android:id="@+id/text_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:hint="@string/prompt_password"
+        android:autofillHints="@string/prompt_password"
+        style="@style/AppTheme.EditTextWithBorder"
+        android:inputType="textPassword"
+        />
+
+
+    <android.support.design.button.MaterialButton
+        android:id="@+id/signin_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_sign_in_short"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingHorizontal="60dp"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/is_new_user"
+            android:layout_marginEnd="10dp"/>
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/signup_action"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="@string/action_sign_up_short"
+            android:paddingHorizontal="30dp"
+            style="@style/AppTheme.RoundedCornerMaterialButtonBorder"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
