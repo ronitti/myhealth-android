@@ -24,6 +24,7 @@ public class UserLogin {
                 if (response.body().getMessage().equals("Wrong password"))
                     throw new WrongPasswordException();
             }
+            assert response.body() != null;
             return response.body().getUserData();
         } catch (IOException e) {
             e.printStackTrace();

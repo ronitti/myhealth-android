@@ -1,13 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
+
     
     <style name="AppTheme.RoundedCornerMaterialButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:background">@drawable/button_default</item>
@@ -33,7 +33,7 @@
 
 
     <style name="AppTheme.EditTextWithBorder" parent="Base.V7.Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/edit_text_border_shape</item>
+        <item name="android:background">@drawable/edit_text_bordered_normal</item>
         <item name="android:layout_height">40dp</item>
     </style>
 
@@ -47,6 +47,10 @@
         <item name="android:background">@drawable/indicator_unselected</item>
         <item name="android:textColor">@color/darkGray</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="AppTheme.TextHintTop" parent="TextAppearance.Design.Error">
+        <item name="android:layout_marginBottom">4dp</item>
     </style>
 
 </resources>

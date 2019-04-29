@@ -5,49 +5,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.HealthDataFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp">
+        android:layout_gravity="center">
 
-
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="48dp"
-            android:textSize="16dp"
-            android:text="Marque a(s) doença(s) que deseja monitorar:" />
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hipertensão arterial"
-            android:layout_marginBottom="8dp"/>
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Doença arterial coronariana"
-            android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="48dp"
+                android:text="Marque a(s) doença(s) que deseja monitorar:"
+                android:textSize="16dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Diabetes"
-            android:layout_marginBottom="8dp"/>
+            <CheckBox
+                android:id="@+id/chk_hypertension"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Hipertensão arterial" />
 
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Obesidade" />
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/chk_coronary_disease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Doença arterial coronariana" />
+
+            <CheckBox
+                android:id="@+id/chk_diabetes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Diabetes" />
+
+            <CheckBox
+                android:id="@+id/chk_obesity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obesidade" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

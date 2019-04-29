@@ -13,7 +13,6 @@ import retrofit2.Response;
 public class PatientLoad {
     public static Patient load(String susNumber){
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
-
         Response<PatientLoadResponse> responseData;
         try {
             responseData = service.loadPatient(new PatientLoadRequest(susNumber)).execute();

@@ -5,94 +5,98 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.AddressFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp">
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="CEP"
-            android:inputType="number"
-            style="@style/AppTheme.EditTextWithBorder"/>
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Rua, Avenida, Alameda etc."
-            android:inputType="text"
-            style="@style/AppTheme.EditTextWithBorder"/>
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Número"
-                android:inputType="number"
-                android:layout_weight="1"
-                style="@style/AppTheme.EditTextWithBorder"/>
-
-            <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/txt_postcode"
                 style="@style/AppTheme.EditTextWithBorder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
                 android:ems="10"
-                android:hint="Complemento"
-                android:inputType="text"
-                android:textFontWeight="1"
-                />
+                android:hint="CEP"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_thoroughfare"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Rua, Avenida, Alameda etc."
+                android:inputType="text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txt_number"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Número"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/txt_complement"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Complemento"
+                    android:inputType="text"
+                    android:textFontWeight="1" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/txt_neighborhood"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Bairro"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/txt_city"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Cidade"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/txt_state"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Estado"
+                android:inputType="text" />
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Bairro"
-            android:inputType="text"
-            style="@style/AppTheme.EditTextWithBorder"/>
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Cidade"
-            android:inputType="text"
-            style="@style/AppTheme.EditTextWithBorder"/>
-
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Estado"
-            android:inputType="text"
-            style="@style/AppTheme.EditTextWithBorder"/>
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

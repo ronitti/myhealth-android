@@ -13,17 +13,15 @@ public class UserRegister {
     public static boolean register(String email, String password) {
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
 
-        Response<UserLoadResponse> responseData = null;
+        Response<UserLoadResponse> responseData;
         try {
             responseData = service.signUp(new User(email, password)).execute();
+            if( responseData.body() != null && !responseData.body().isSuccess()){
+                throw new ExistingEmailException();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if( responseData.body() != null && !responseData.body().isSuccess()){
-            throw new ExistingEmailException();
-        }
-
         return true;
     }
 }

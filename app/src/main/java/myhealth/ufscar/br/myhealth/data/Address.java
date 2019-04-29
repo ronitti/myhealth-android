@@ -2,7 +2,9 @@ package myhealth.ufscar.br.myhealth.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     @SerializedName("postCode")
     private String postcode;
     @SerializedName("thoroughfare")

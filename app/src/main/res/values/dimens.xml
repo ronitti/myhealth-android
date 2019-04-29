@@ -3,5 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="edit_text_heigth">35dp</dimen>
-    <dimen name="margin_of_indicators">45dp</dimen>
+    <dimen name="margin_of_indicators">25dp</dimen>
 </resources>

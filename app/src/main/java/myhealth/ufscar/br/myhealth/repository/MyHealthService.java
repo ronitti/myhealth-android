@@ -1,7 +1,5 @@
 package myhealth.ufscar.br.myhealth.repository;
 
-import java.util.List;
-
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.repository.query.PatientLoadRequest;

@@ -12,7 +12,6 @@ import retrofit2.Response;
 public class PatientRegister {
     public static boolean register(Patient patient){
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
-
         Response<UserLoadResponse> responseData;
         try {
             responseData = service.createPatient(patient).execute();

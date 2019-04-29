@@ -5,81 +5,86 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.PersonalDataFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp">
+        android:layout_gravity="center">
 
-        <EditText
-            android:id="@+id/editText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Nome Completo"
-            android:inputType="textPersonName"
-            style="@style/AppTheme.EditTextWithBorder"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Data de Nascimento"
-            android:inputType="date"
-            style="@style/AppTheme.EditTextWithBorder"/>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/txt_name"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sexo:" />
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Nome Completo"
+                android:inputType="textPersonName" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/txt_date_of_birth"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Masculino" />
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Data de Nascimento"
+                android:inputType="date" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sexo:" />
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Masculino" />
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Feminino" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/txt_mothers_name"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Feminino" />
-        </RadioGroup>
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Nome da Mãe"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Nome da Mãe"
-            android:inputType="textPersonName"
-            style="@style/AppTheme.EditTextWithBorder"/>
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Naturalidade"
-            android:inputType="text"
-            style="@style/AppTheme.EditTextWithBorder"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/txt_place_of_birth"
+                style="@style/AppTheme.EditTextWithBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="10"
+                android:hint="Naturalidade"
+                android:inputType="text" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

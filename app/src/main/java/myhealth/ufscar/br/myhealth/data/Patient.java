@@ -2,7 +2,9 @@ package myhealth.ufscar.br.myhealth.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Patient extends User{
+import java.io.Serializable;
+
+public class Patient extends User implements Serializable {
     @SerializedName("susNumber")
     private String susNumber;
     @SerializedName("name")
@@ -20,6 +22,9 @@ public class Patient extends User{
 
     public Patient(String email, String password) {
         super(email, password);
+    }
+    public Patient(){
+        super();
     }
 
     public String getSusNumber() {
