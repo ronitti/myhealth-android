@@ -58,8 +58,6 @@ public class AccessDataFragment extends Fragment {
                     if (!TextUtils.isEmpty(txtEmail.getText()) && Patterns.EMAIL_ADDRESS.matcher(txtEmail.getText()).matches()){
                         SectionData.PATIENT.setEmail(txtEmail.getText().toString());
                         txtEmailLayout.setError(null);
-                    }else{
-                        System.out.println("Email inválido");
                     }
                 }
             }

@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789 "
                     android:ems="10"
-                    android:hint="Número do SUS"
+                    android:hint="@string/register_hint_sus_number"
                     android:textCursorDrawable="@null"
                     android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:ems="10"
-                    android:hint="E-mail"
+                    android:hint="@string/register_hint_email"
                     android:textCursorDrawable="@null"
                     android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@null"
                     android:ems="10"
-                    android:hint="Senha"
+                    android:hint="@string/register_hint_password"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@null"
                     android:ems="10"
-                    android:hint="Repita a senha"
+                    android:hint="@string/register_hint_password_confirm"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

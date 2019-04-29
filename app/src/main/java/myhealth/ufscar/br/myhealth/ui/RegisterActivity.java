@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
         pagerAdapter = new RegisterPagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(pagerAdapter);
-        lblStepTitle.setText(SignUpStep.values()[0].getStepTitle());
+        lblStepTitle.setText(getString(SignUpStep.values()[0].getStepTitle()));
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity implements
                 }else{
                     SignUpStep step = nextStep();
                     mPager.setCurrentItem(step.step);
-                    lblStepTitle.setText(step.getStepTitle());
+                    lblStepTitle.setText(getString(step.getStepTitle()));
                 }
             }
         });
@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements
                 if (mPager.getCurrentItem() > 0){
                     SignUpStep step = stepBack();
                     mPager.setCurrentItem(step.step);
-                    lblStepTitle.setText(step.getStepTitle());
+                    lblStepTitle.setText(getString(step.getStepTitle()));
                 }
             }
         });
@@ -134,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity implements
         if (mPager.getCurrentItem() > 0){
             SignUpStep step = stepBack();
             mPager.setCurrentItem(step.step);
-            lblStepTitle.setText(step.getStepTitle());
+            lblStepTitle.setText(getString(step.getStepTitle()));
         }
     }
 
@@ -142,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements
     public void onTaskFinsh(boolean result) {
         if(result) {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-            lblStepTitle.setText(nextStep().getStepTitle());
+            lblStepTitle.setText(getString(nextStep().getStepTitle()));
         }
     }
 

@@ -1,18 +1,20 @@
 package myhealth.ufscar.br.myhealth.data.collect.frequency;
 
-public enum DayOfWeek {
-    EVERYDAY("todos os dias", 0),
-    SUNDAY("domingo", 1),
-    MONDAY("segunda", 2),
-    TUESDAY("terça", 3),
-    WEDNESDAY("quarta", 4),
-    THURSDAY("quinta", 5),
-    FRIDAY("sexta",6),
-    SATURDAY("sábado", 7);
+import myhealth.ufscar.br.myhealth.R;
 
-    String dayOfWeek;
+public enum DayOfWeek {
+    EVERYDAY(R.string.lbl_every_day, 0),
+    SUNDAY(R.string.lbl_sunday, 1),
+    MONDAY(R.string.lbl_monday, 2),
+    TUESDAY(R.string.lbl_tuesday, 3),
+    WEDNESDAY(R.string.lbl_wednesday, 4),
+    THURSDAY(R.string.lbl_thursday, 5),
+    FRIDAY(R.string.lbl_friday,6),
+    SATURDAY(R.string.lbl_saturday, 7);
+
+    Integer dayOfWeek;
     Integer day;
-    DayOfWeek(String dayOfWeek, Integer day){
+    DayOfWeek(Integer dayOfWeek, Integer day){
         this.dayOfWeek = dayOfWeek;
         this.day = day;
     }

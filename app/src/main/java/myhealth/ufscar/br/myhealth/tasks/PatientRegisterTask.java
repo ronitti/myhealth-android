@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 
+import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.exception.ExistingSusNumberException;
@@ -18,7 +19,7 @@ public class PatientRegisterTask extends AsyncTask<Patient, User, Boolean> {
 
     public PatientRegisterTask(Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(activity.getString(R.string.dialog_btn_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -37,7 +38,7 @@ public class PatientRegisterTask extends AsyncTask<Patient, User, Boolean> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        alertDialog.setMessage("Cadastrando...");
+        alertDialog.setMessage(alertDialog.getContext().getString(R.string.dialog_lbl_registering));
         alertDialog.show();
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
@@ -56,9 +57,9 @@ public class PatientRegisterTask extends AsyncTask<Patient, User, Boolean> {
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
         if(code == 1){
-            alertDialog.setMessage("O Número do SUS fornecido já foi cadastrado.");
+            alertDialog.setMessage(alertDialog.getContext().getString(R.string.dialog_error_existing_sus));
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText("Tentar novamente");
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(alertDialog.getContext().getString(R.string.dialog_btn_try_again));
         }else{
             alertDialog.cancel();
         }

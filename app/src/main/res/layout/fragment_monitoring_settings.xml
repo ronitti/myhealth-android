@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                android:text="Em quais dias a coleta será realizada?"
+                android:text="@string/register_lbl_frequency_define"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -45,21 +45,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Todo dia" />
+                        android:text="@string/register_lbl_every_day" />
 
                     <RadioButton
                         android:id="@+id/rd_weekly"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Toda semana" />
+                        android:text="@string/register_lbl_every_week" />
 
                     <RadioButton
                         android:id="@+id/rd_custom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Personalizado" />
+                        android:text="@string/register_lbl_custom" />
                 </RadioGroup>
 
                 <LinearLayout
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:text="Coleta a cada"
+                        android:text="@string/register_lbl_collect_custom"
                         android:textSize="16sp" />
 
                     <LinearLayout
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
-                    android:text="Dias da Semana" />
+                    android:text="@string/register_lbl_days_of_week" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,49 +132,49 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="D" />
+                        android:text="@string/register_lbl_short_sunday" />
 
                     <CheckBox
                         android:id="@+id/chk_monday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="S" />
+                        android:text="@string/register_lbl_short_monday" />
 
                     <CheckBox
                         android:id="@+id/chk_tuesday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="T" />
+                        android:text="@string/register_lbl_short_tuesday" />
 
                     <CheckBox
                         android:id="@+id/chk_wednesday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Q" />
+                        android:text="@string/register_lbl_short_wednesday" />
 
                     <CheckBox
                         android:id="@+id/chk_thursday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Q" />
+                        android:text="@string/register_lbl_short_thursday" />
 
                     <CheckBox
                         android:id="@+id/chk_friday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="S" />
+                        android:text="@string/register_lbl_short_friday" />
 
                     <CheckBox
                         android:id="@+id/chk_saturday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="S" />
+                        android:text="@string/register_lbl_short_saturday" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -190,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Quantas vezes ao dia?" />
+                    android:text="@string/register_lbl_times_a_day" />
 
                 <EditText
                     android:id="@+id/txt_times_a_day"

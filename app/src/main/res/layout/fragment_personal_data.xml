@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Nome Completo"
+                android:hint="@string/register_hint_name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Data de Nascimento"
+                android:hint="@string/register_hint_date_of_birth"
                 android:inputType="date" />
 
             <RadioGroup
@@ -48,21 +48,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sexo:" />
+                    android:text="@string/register_hint_gender" />
 
                 <RadioButton
                     android:id="@+id/radio_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Masculino" />
+                    android:text="@string/register_lbl_male" />
 
                 <RadioButton
                     android:id="@+id/radio_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Feminino" />
+                    android:text="@string/register_lbl_female" />
             </RadioGroup>
 
             <EditText
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Nome da Mãe"
+                android:hint="@string/register_hint_mothers_name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Naturalidade"
+                android:hint="@string/register_hint_place_of_birth"
                 android:inputType="text" />
         </LinearLayout>
     </ScrollView>

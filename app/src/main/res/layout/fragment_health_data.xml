@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="48dp"
-                android:text="Marque a(s) doença(s) que deseja monitorar:"
+                android:text="@string/register_lbl_diseases_choose"
                 android:textSize="16dp" />
 
             <CheckBox
@@ -31,27 +31,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Hipertensão arterial" />
+                android:text="@string/register_lbl_disease_hypertension" />
 
             <CheckBox
                 android:id="@+id/chk_coronary_disease"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Doença arterial coronariana" />
+                android:text="@string/register_lbl_disease_coronary" />
 
             <CheckBox
                 android:id="@+id/chk_diabetes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Diabetes" />
+                android:text="@string/register_lbl_disease_diabetes" />
 
             <CheckBox
                 android:id="@+id/chk_obesity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Obesidade" />
+                android:text="@string/register_lbl_disease_obesity" />
         </LinearLayout>
     </ScrollView>
 

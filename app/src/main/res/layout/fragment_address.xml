@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="CEP"
+                android:hint="@string/register_hint_postcode"
                 android:inputType="number" />
 
             <EditText
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Rua, Avenida, Alameda etc."
+                android:hint="@string/register_hint_thoroughfare"
                 android:inputType="text" />
 
             <LinearLayout
@@ -50,7 +50,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Número"
+                    android:hint="@string/register_hint_number"
                     android:inputType="number" />
 
                 <EditText
@@ -62,7 +62,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Complemento"
+                    android:hint="@string/register_hint_complement"
                     android:inputType="text"
                     android:textFontWeight="1" />
             </LinearLayout>
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Bairro"
+                android:hint="@string/register_hint_neighborhood"
                 android:inputType="text" />
 
             <EditText
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Cidade"
+                android:hint="@string/register_hint_city"
                 android:inputType="text" />
 
             <EditText
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:ems="10"
-                android:hint="Estado"
+                android:hint="@string/register_hint_state"
                 android:inputType="text" />
         </LinearLayout>
     </ScrollView>

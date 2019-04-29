@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 
+import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.exception.WrongPasswordException;
@@ -19,7 +20,7 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
 
     public UserLoginTask(Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(activity.getString(R.string.dialog_btn_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -31,7 +32,7 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        alertDialog.setMessage("Autenticando...");
+        alertDialog.setMessage(alertDialog.getContext().getString(R.string.dialog_lbl_entering));
         alertDialog.show();
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
 
@@ -53,13 +54,13 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
     protected void onPostExecute(User user) {
         super.onPostExecute(user);
         if (code == 1){
-            alertDialog.setMessage("Senha incorreta.");
+            alertDialog.setMessage(alertDialog.getContext().getString(R.string.dialog_error_wrong_password));
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText("Tentar novamente");
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(alertDialog.getContext().getString(R.string.dialog_btn_try_again));
         }else if(code == 2){
-            alertDialog.setMessage("E-mail não cadastrado.");
+            alertDialog.setMessage(alertDialog.getContext().getString(R.string.dialog_error_email_not_registered));
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText("Tentar novamente");
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(alertDialog.getContext().getString(R.string.dialog_btn_try_again));
         }else{
             Intent intent = new Intent(alertDialog.getContext(), MainActivity.class);
             alertDialog.getContext().startActivity(intent);

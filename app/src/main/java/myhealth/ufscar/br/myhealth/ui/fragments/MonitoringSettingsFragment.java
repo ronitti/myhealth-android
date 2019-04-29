@@ -64,7 +64,7 @@ public class MonitoringSettingsFragment extends Fragment {
         txtCustomTimes = view.findViewById(R.id.txt_custom_times);
 
         spnCustomType = view.findViewById(R.id.spn_custom_type);
-        String[] arraySpinner = new String[] {"dias", "semanas"};
+        String[] arraySpinner = new String[] {getString(R.string.settings_item_days), getString(R.string.settings_item_weeks)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(view.getContext(),android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCustomType.setAdapter(adapter);

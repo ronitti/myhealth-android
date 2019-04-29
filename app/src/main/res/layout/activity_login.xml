@@ -26,8 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:hint="@string/prompt_email"
-        android:autofillHints="@string/prompt_email"
+        android:hint="@string/register_hint_email"
+        android:autofillHints="@string/register_hint_email"
         style="@style/AppTheme.EditTextWithBorder"
         android:inputType="textEmailAddress"
         />
@@ -37,8 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:hint="@string/prompt_password"
-        android:autofillHints="@string/prompt_password"
+        android:hint="@string/register_hint_password"
+        android:autofillHints="@string/register_hint_password"
         style="@style/AppTheme.EditTextWithBorder"
         android:inputType="textPassword"
         />
@@ -48,7 +48,7 @@
         android:id="@+id/signin_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/action_sign_in_short"
+        android:text="@string/activity_btn_login"
         android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:paddingHorizontal="60dp"
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/is_new_user"
+            android:text="@string/register_lbl_new_user"
             android:layout_marginEnd="10dp"/>
 
         <Button
@@ -73,7 +73,7 @@
             style="@style/AppTheme.RoundedCornerMaterialButtonBorder"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="@string/action_sign_up_short"
+            android:text="@string/activity_btn_signup"
             android:paddingHorizontal="30dp"
             />
 
