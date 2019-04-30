@@ -2,6 +2,22 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="edit_text_heigth">35dp</dimen>
-    <dimen name="margin_of_indicators">25dp</dimen>
+    <dimen name="margin_of_indicators">24dp</dimen>
+    <dimen name="gap_between_fields">24dp</dimen>
+    <dimen name="margin_title_to_content">48dp</dimen>
+
+    <dimen name="height_edit_txt_lg">64dp</dimen>
+    <dimen name="height_edit_txt_md">48dp</dimen>
+    <dimen name="height_edit_txt_sm">36dp</dimen>
+
+    <dimen name="width_btn_lg">160dp</dimen>
+    <dimen name="width_btn_md">120dp</dimen>
+    <dimen name="width_btn_sm">80dp</dimen>
+
+    <dimen name="height_btn_lg">64dp</dimen>
+    <dimen name="height_btn_md">48dp</dimen>
+    <dimen name="height_btn_sm">36dp</dimen>
+
+    <dimen name="margin_bottom_pager">64dp</dimen>
+    <dimen name="margin_top_nav_buttons">-64dp</dimen>
 </resources>

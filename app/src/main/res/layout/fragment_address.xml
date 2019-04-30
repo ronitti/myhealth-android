@@ -1,102 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.AddressFragment">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/txt_postcode"
-                style="@style/AppTheme.EditTextWithBorder"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="@string/register_hint_postcode"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
 
-            <EditText
-                android:id="@+id/txt_thoroughfare"
-                style="@style/AppTheme.EditTextWithBorder"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_postcode"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:textCursorDrawable="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_postcode"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="@string/register_hint_thoroughfare"
-                android:inputType="text" />
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_thoroughfare"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:textCursorDrawable="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_thoroughfare"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/txt_number"
-                    style="@style/AppTheme.EditTextWithBorder"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/register_hint_number"
-                    android:inputType="number" />
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true">
 
-                <EditText
-                    android:id="@+id/txt_complement"
-                    style="@style/AppTheme.EditTextWithBorder"
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txt_number"
+                        style="@style/AppTheme.EditTextWithBorder"
+                        android:textCursorDrawable="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_edit_txt_lg"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/register_hint_number"
+                        android:inputType="number" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/register_hint_complement"
-                    android:inputType="text"
-                    android:textFontWeight="1" />
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/txt_complement"
+                        style="@style/AppTheme.EditTextWithBorder"
+                        android:textCursorDrawable="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_edit_txt_lg"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/register_hint_complement"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/txt_neighborhood"
-                style="@style/AppTheme.EditTextWithBorder"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="@string/register_hint_neighborhood"
-                android:inputType="text" />
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
 
-            <EditText
-                android:id="@+id/txt_city"
-                style="@style/AppTheme.EditTextWithBorder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="@string/register_hint_city"
-                android:inputType="text" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_city"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:textCursorDrawable="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_city"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/txt_state"
-                style="@style/AppTheme.EditTextWithBorder"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="@string/register_hint_state"
-                android:inputType="text" />
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_neighborhood"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:textCursorDrawable="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_neighborhood"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_state"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:textCursorDrawable="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_state"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
         </LinearLayout>
-    </ScrollView>
 
-</FrameLayout>
+</ScrollView>

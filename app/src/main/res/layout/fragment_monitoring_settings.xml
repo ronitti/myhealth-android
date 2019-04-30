@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.MonitoringSettingsFragment">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
             android:orientation="vertical">
-
 
             <TextView
                 android:id="@+id/textView"
@@ -32,7 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <RadioGroup
@@ -108,7 +98,6 @@
                 android:id="@+id/layout_weekly"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -212,6 +201,5 @@
 
 
         </LinearLayout>
-    </ScrollView>
 
-</FrameLayout>
+</ScrollView>
