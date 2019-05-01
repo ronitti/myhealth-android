@@ -20,4 +20,8 @@
 
     <dimen name="margin_bottom_pager">64dp</dimen>
     <dimen name="margin_top_nav_buttons">-64dp</dimen>
+
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

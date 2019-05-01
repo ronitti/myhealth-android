@@ -1,8 +1,9 @@
 package myhealth.ufscar.br.myhealth.data.collect;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Register {
+public class Register implements Serializable {
     private Integer id;
     private Date dateTime;
     private String observation;

@@ -76,4 +76,26 @@
     <string name="register_hint_gender">Gender</string>
     <string name="register_lbl_male">Male</string>
     <string name="register_lbl_female">Female</string>
+
+
+    <string name="collect_data_cadiac_systolic">Systolic pressure</string>
+    <string name="collect_data_cadiac_diastolic">Diastolic pressure</string>
+    <string name="collect_data_cadiac_heart_beats">Heart beats</string>
+    <string name="collect_data_cadiac_weight">Weight</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="list_register_title">History of Data Collection</string>
 </resources>
