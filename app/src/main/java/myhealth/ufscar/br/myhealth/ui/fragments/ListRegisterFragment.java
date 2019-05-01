@@ -27,6 +27,7 @@ import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
 public class ListRegisterFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    RegisterAdapter adapter;
     private List<Register> registerList;
     private RegisterDAO dao;
 
@@ -42,7 +43,7 @@ public class ListRegisterFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         populateList();
-        RegisterAdapter adapter = new RegisterAdapter(getActivity(), registerList);
+        adapter = new RegisterAdapter(getActivity(), registerList);
         DividerItemDecoration dvi = new DividerItemDecoration(recyclerView.getContext(), llm.getOrientation());
         recyclerView.addItemDecoration(dvi);
         recyclerView.setAdapter(adapter);
@@ -59,6 +60,16 @@ public class ListRegisterFragment extends Fragment {
         registerList = dao.listRegisters();
 
     }
+
+
+    public void updateList() {
+        registerList.clear();
+        registerList = dao.listRegisters();
+        adapter.setList(registerList);
+        adapter.notifyDataSetChanged();
+    }
+
+
 
 
 }

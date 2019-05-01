@@ -97,4 +97,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         }
     }
 
+    public void setList(List<Register> list) {
+        this.list = list;
+    }
 }

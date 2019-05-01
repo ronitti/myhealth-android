@@ -66,5 +66,23 @@
             android:ems="10"
             android:inputType="numberDecimal"
             android:hint="@string/collect_data_cadiac_weight"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/txt_observation"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            style="@style/AppTheme.EditTextWithBorder"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Observation"
+            android:inputType="textMultiLine" />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

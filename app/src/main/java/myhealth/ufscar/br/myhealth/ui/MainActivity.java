@@ -1,5 +1,6 @@
 package myhealth.ufscar.br.myhealth.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,8 @@ import myhealth.ufscar.br.myhealth.ui.fragments.ListRegisterFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    ListRegisterFragment fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +44,11 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //anything...
+                launchCollect();
             }
         });
 
-        Fragment fragment = new ListRegisterFragment();
+        fragment = new ListRegisterFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_content, fragment);
@@ -119,5 +122,15 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public void launchCollect() {
+        Intent intent = new Intent(this, CollectActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    protected void onResume() {
+        fragment.updateList();
+        super.onResume();
+
+    }
 }
