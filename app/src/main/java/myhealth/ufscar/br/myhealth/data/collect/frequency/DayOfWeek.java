@@ -18,4 +18,8 @@ public enum DayOfWeek {
         this.dayOfWeek = dayOfWeek;
         this.day = day;
     }
+
+    public Integer getDay() {
+        return day;
+    }
 }

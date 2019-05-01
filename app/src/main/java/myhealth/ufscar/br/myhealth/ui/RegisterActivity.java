@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,10 @@ import java.util.LinkedList;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
+import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.PatientMonitoring;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
 import myhealth.ufscar.br.myhealth.tasks.PatientRegisterTask;
 import myhealth.ufscar.br.myhealth.tasks.UserRegisterTask;
 
@@ -50,6 +53,16 @@ public class RegisterActivity extends AppCompatActivity implements
 
     public boolean[] getActivatedSteps() {
         return activatedSteps;
+    }
+
+    public SignUpStep getCurrentStep(){
+        return currentStep;
+    }
+
+    private Frequency frequency;
+
+    public Frequency getFrequency() {
+        return frequency;
     }
 
     @Override
@@ -90,6 +103,8 @@ public class RegisterActivity extends AppCompatActivity implements
         });
 
         pagerAdapter = new RegisterPagerAdapter(getSupportFragmentManager());
+
+        frequency = new Frequency();
         mPager.setAdapter(pagerAdapter);
         lblStepTitle.setText(getString(SignUpStep.values()[0].getStepTitle()));
 
@@ -103,7 +118,20 @@ public class RegisterActivity extends AppCompatActivity implements
                 }else if(currentStep == SignUpStep.SETTINGS_SUCCESS) {
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
-                }else{
+                }else {
+                    if (currentStep == SignUpStep.MONITORING_HYPERTENSION_SETTINGS) {
+                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.HYPERTENSION.getId(),new Pair<>(NCD.HYPERTENSION, frequency));
+                        frequency = new Frequency();
+                    }else if(currentStep == SignUpStep.MONITORING_CORONARY_SETTINGS){
+                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.CORONARY_ARTERY_DISEASE.getId(),new Pair<>(NCD.CORONARY_ARTERY_DISEASE, frequency));
+                        frequency = new Frequency();
+                    }else if (currentStep == SignUpStep.MONITORING_DIABETES_SETTINGS) {
+                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.DIABETES.getId(),new Pair<>(NCD.DIABETES, frequency));
+                        frequency = new Frequency();
+                    }else if (currentStep == SignUpStep.MONITORING_OBESITY_SETTINGS) {
+                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.OBESITY.getId(),new Pair<>(NCD.OBESITY, frequency));
+                        frequency = new Frequency();
+                    }
                     SignUpStep step = nextStep();
                     mPager.setCurrentItem(step.step);
                     lblStepTitle.setText(getString(step.getStepTitle()));
@@ -120,10 +148,6 @@ public class RegisterActivity extends AppCompatActivity implements
                 }
             }
         });
-    }
-
-    public ViewPager getmPager() {
-        return mPager;
     }
 
     @Override
@@ -149,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
     private class RegisterPagerAdapter extends FragmentStatePagerAdapter {
 
-        public RegisterPagerAdapter(FragmentManager fm) {
+        RegisterPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 

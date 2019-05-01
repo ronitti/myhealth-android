@@ -2,7 +2,9 @@ package myhealth.ufscar.br.myhealth.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.Objects;
+
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.DayOfWeek;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
+import myhealth.ufscar.br.myhealth.ui.RegisterActivity;
 
 public class MonitoringSettingsFragment extends Fragment {
     private RadioButton rdDaily;
@@ -37,6 +48,9 @@ public class MonitoringSettingsFragment extends Fragment {
     private CheckBox chkSaturday;
 
     private LinearLayout layoutTimesADay;
+    private TextInputEditText txtTimesADay;
+    private TextInputEditText txtHoursOfDay[];
+    private Frequency frequency;
 
     public MonitoringSettingsFragment() {
 
@@ -79,6 +93,9 @@ public class MonitoringSettingsFragment extends Fragment {
         chkSaturday = view.findViewById(R.id.chk_saturday);
 
         layoutTimesADay = view.findViewById(R.id.layout_times_a_day);
+        txtTimesADay = view.findViewById(R.id.txt_times_a_day);
+
+        frequency = ((RegisterActivity) Objects.requireNonNull(getActivity())).getFrequency();
         initFieldsListeners();
     }
 
@@ -90,6 +107,8 @@ public class MonitoringSettingsFragment extends Fragment {
                 if(isChecked){
                     layoutCustom.setVisibility(View.GONE);
                     layoutWeekly.setVisibility(View.GONE);
+
+                    frequency.setFrequencyType(FrequencyType.DAILY);
                 }
             }
         });
@@ -99,6 +118,8 @@ public class MonitoringSettingsFragment extends Fragment {
                 if(isChecked){
                     layoutCustom.setVisibility(View.GONE);
                     layoutWeekly.setVisibility(View.VISIBLE);
+
+                    frequency.setFrequencyType(FrequencyType.WEEKLY);
                 }
             }
         });
@@ -116,14 +137,103 @@ public class MonitoringSettingsFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (id == 0) {
                     layoutWeekly.setVisibility(View.GONE);
+                    frequency.setFrequencyType(FrequencyType.CUSTOM_DAYS);
                 } else {
                     layoutWeekly.setVisibility(View.VISIBLE);
+                    frequency.setFrequencyType(FrequencyType.CUSTOM_WEEKS);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        txtCustomTimes.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus)
+                    frequency.setCustomEvery(Integer.parseInt(txtCustomTimes.getText().toString()));
+            }
+        });
+        txtTimesADay.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus) {
+                    frequency.setTimesADay(Integer.parseInt(Objects.requireNonNull(txtTimesADay.getText()).toString()));
+                    if (layoutTimesADay.getChildCount() > 0)
+                        layoutTimesADay.removeAllViews();
+                    frequency.setHoursOfDay(new Date[frequency.getTimesADay()]);
+                    txtHoursOfDay = new TextInputEditText[frequency.getTimesADay()];
+                    for(int i=0; i<frequency.getTimesADay(); i++){
+                        frequency.getHoursOfDay()[i] = new Date();
+                        txtHoursOfDay[i] = new TextInputEditText(Objects.requireNonNull(getActivity()));
+                        txtHoursOfDay[i].setInputType(InputType.TYPE_DATETIME_VARIATION_TIME);
+                        txtHoursOfDay[i].setText("12:00");
+                        layoutTimesADay.addView(txtHoursOfDay[i],i);
+                        txtHoursOfDay[i].setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                            private int i;
+                            @Override
+                            public void onFocusChange(View v, boolean hasFocus) {
+                                if(!hasFocus) {
+                                    try {
+                                        frequency.getHoursOfDay()[i] = DateFormat.getDateInstance().parse(Objects.requireNonNull(txtHoursOfDay[i].getText()).toString());
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                            View.OnFocusChangeListener init(int i){
+                                this.i = i;
+                                return this;
+                            }
+                        }.init(i));
+                    }
+                }
+            }
+        });
+
+        chkSunday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.SUNDAY.getDay()] = isChecked;
+            }
+        });
+        chkMonday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.MONDAY.getDay()] = isChecked;
+            }
+        });
+        chkTuesday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.TUESDAY.getDay()] = isChecked;
+            }
+        });
+        chkWednesday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.WEDNESDAY.getDay()] = isChecked;
+            }
+        });
+        chkThursday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.THURSDAY.getDay()] = isChecked;
+            }
+        });
+        chkFriday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.FRIDAY.getDay()] = isChecked;
+            }
+        });
+        chkSaturday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                frequency.getDaysOfWeek()[DayOfWeek.SATURDAY.getDay()] = isChecked;
             }
         });
     }
