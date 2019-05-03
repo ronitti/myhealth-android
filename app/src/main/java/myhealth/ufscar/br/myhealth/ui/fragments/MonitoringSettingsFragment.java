@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Objects;
@@ -27,6 +26,7 @@ import myhealth.ufscar.br.myhealth.data.collect.frequency.DayOfWeek;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
 import myhealth.ufscar.br.myhealth.ui.RegisterActivity;
+import myhealth.ufscar.br.myhealth.utils.DateTime;
 
 public class MonitoringSettingsFragment extends Fragment {
     private RadioButton rdDaily;
@@ -178,7 +178,7 @@ public class MonitoringSettingsFragment extends Fragment {
                             public void onFocusChange(View v, boolean hasFocus) {
                                 if(!hasFocus) {
                                     try {
-                                        frequency.getHoursOfDay()[i] = DateFormat.getDateInstance().parse(Objects.requireNonNull(txtHoursOfDay[i].getText()).toString());
+                                        frequency.getHoursOfDay()[i] = DateTime.SIMPLE_TIME_FORMAT.parse(Objects.requireNonNull(txtHoursOfDay[i].getText()).toString());
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }

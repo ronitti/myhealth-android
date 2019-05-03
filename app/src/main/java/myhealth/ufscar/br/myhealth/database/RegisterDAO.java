@@ -2,9 +2,7 @@ package myhealth.ufscar.br.myhealth.database;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.CrossProcessCursor;
 import android.database.Cursor;
-import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,14 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
 import myhealth.ufscar.br.myhealth.data.collect.Glycemic;
 import myhealth.ufscar.br.myhealth.data.collect.Obesity;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
-import myhealth.ufscar.br.myhealth.usecases.NCDRegister;
 
 public class RegisterDAO {
 
@@ -35,15 +31,15 @@ public class RegisterDAO {
 
         ContentValues values = new ContentValues();
 
-        values.put("datetime", register.getDateTime().toString());
+        values.put("datetime", register.getTimestamp().toString());
         values.put("observation", register.getObservation());
 
         if (register instanceof Cardiac) {
             Cardiac c = (Cardiac) register;
-            values.put("systolic", c.getSystolicPressure());
-            values.put("diastolic", c.getDiastolicPressure());
+            values.put("systolic", c.getSystolic());
+            values.put("diastolic", c.getDiastolic());
             values.put("weight", c.getWeight());
-            values.put("heart_beats", c.getPulse());
+            values.put("heart_beats", c.getHeartBeats());
             values.put("dcnt_type", NCD.CORONARY_ARTERY_DISEASE.getId());
         } else if( register instanceof Glycemic) {
             Glycemic g = (Glycemic) register;
@@ -69,9 +65,9 @@ public class RegisterDAO {
 
             if (type == NCD.CORONARY_ARTERY_DISEASE.getId() || type == NCD.HYPERTENSION.getId()) {
                 r = new Cardiac();
-                ((Cardiac) r).setSystolicPressure( cursor.getFloat(cursor.getColumnIndex("systolic")));
-                ((Cardiac) r).setDiastolicPressure( cursor.getFloat(cursor.getColumnIndex("diastolic")));
-                ((Cardiac) r).setPulse( cursor.getInt(cursor.getColumnIndex("heart_beats")));
+                ((Cardiac) r).setSystolic( cursor.getInt(cursor.getColumnIndex("systolic")));
+                ((Cardiac) r).setDiastolic( cursor.getInt(cursor.getColumnIndex("diastolic")));
+                ((Cardiac) r).setHeartBeats( cursor.getInt(cursor.getColumnIndex("heart_beats")));
                 ((Cardiac) r).setWeight( cursor.getFloat( cursor.getColumnIndex("weight")));
 
             } else if (type == NCD.DIABETES.getId()) {
@@ -80,7 +76,7 @@ public class RegisterDAO {
             } else if (type == NCD.OBESITY.getId()) {
                 r = new Obesity();
                 ((Obesity) r).setWeight(cursor.getFloat(cursor.getColumnIndex("weight")));
-                ((Obesity) r).setFatRate(cursor.getFloat(cursor.getColumnIndex("bodyfat")));
+                ((Obesity) r).setBodyfat(cursor.getFloat(cursor.getColumnIndex("bodyfat")));
             }
 
             if (r != null) {
@@ -90,7 +86,7 @@ public class RegisterDAO {
                 try {
                     String sdate = cursor.getString(cursor.getColumnIndex("datetime"));
                     Date date = sdf.parse(sdate);
-                    r.setDateTime(date);
+                    r.setTimestamp(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

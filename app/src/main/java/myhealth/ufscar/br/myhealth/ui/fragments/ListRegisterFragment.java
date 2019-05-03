@@ -11,12 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import myhealth.ufscar.br.myhealth.R;
-import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.ui.adapters.RegisterAdapter;
@@ -57,14 +56,23 @@ public class ListRegisterFragment extends Fragment {
         if (dao == null) {
             dao = new RegisterDAO(getActivity());
         }
-        registerList = dao.listRegisters();
-
+        /*
+        //Getting from server
+        if (SectionData.PATIENT_REGISTERS != null){
+            for(Register register: SectionData.PATIENT_REGISTERS)
+                dao.save(register);
+        }
+        SectionData.PATIENT_REGISTERS = new ArrayList<>(dao.listRegisters());
+        //registerList = dao.listRegisters();
+        */
+        registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
     }
 
 
     public void updateList() {
         registerList.clear();
-        registerList = dao.listRegisters();
+        //registerList = dao.listRegisters();
+        registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
         adapter.setList(registerList);
         adapter.notifyDataSetChanged();
     }

@@ -3,9 +3,21 @@ package myhealth.ufscar.br.myhealth.data.collect;
 import java.io.Serializable;
 import java.util.Date;
 
+import myhealth.ufscar.br.myhealth.data.NCD;
+
 public class Register implements Serializable {
     private Integer id;
-    private Date dateTime;
+    private NCD ncd;
+
+    public NCD getNcd() {
+        return ncd;
+    }
+
+    public void setNcd(NCD ncd) {
+        this.ncd = ncd;
+    }
+
+    private Date timestamp;
     private String observation;
 
     public Integer getId() {
@@ -16,12 +28,12 @@ public class Register implements Serializable {
         this.id = id;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getObservation() {

@@ -102,6 +102,24 @@
                 app:hintEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_neighborhood"
+                    style="@style/AppTheme.EditTextWithBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_edit_txt_lg"
+                    android:ems="10"
+                    android:hint="@string/register_hint_neighborhood"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/txt_city"
                     style="@style/AppTheme.EditTextWithBorder"
                     android:textCursorDrawable="@null"
@@ -120,32 +138,14 @@
                 app:hintEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/txt_neighborhood"
-                    style="@style/AppTheme.EditTextWithBorder"
-                    android:textCursorDrawable="@null"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_edit_txt_lg"
-                    android:ems="10"
-                    android:hint="@string/register_hint_neighborhood"
-                    android:inputType="text" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:errorEnabled="true"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true">
-
-                <android.support.design.widget.TextInputEditText
                     android:id="@+id/txt_state"
                     style="@style/AppTheme.EditTextWithBorder"
-                    android:textCursorDrawable="@null"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_edit_txt_lg"
                     android:ems="10"
                     android:hint="@string/register_hint_state"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textCursorDrawable="@null" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>

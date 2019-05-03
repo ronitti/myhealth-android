@@ -9,4 +9,8 @@ public enum FrequencyType {
     FrequencyType(Integer type){
         this.type = type;
     }
+
+    public Integer getType() {
+        return type;
+    }
 }

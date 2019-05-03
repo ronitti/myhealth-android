@@ -49,25 +49,25 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
 
             if (register instanceof Cardiac) {
                 Log.i("LogRegister: ", "is instance of cardiac" + i);
-                txt_title += ("Sys: " + ((Cardiac) register).getSystolicPressure());
-                txt_title += (" Dia: " + ((Cardiac) register).getDiastolicPressure());
-                txt_title += (" Pulses: " + ((Cardiac) register).getPulse());
+                txt_title += ("Sys: " + ((Cardiac) register).getSystolic());
+                txt_title += (" Dia: " + ((Cardiac) register).getDiastolic());
+                txt_title += (" Pulses: " + ((Cardiac) register).getHeartBeats());
                 txt_title += (" Weight: " + ((Cardiac) register).getWeight());
             } else if (register instanceof Glycemic) {
                 txt_title.concat("Glycemic Rate: " + ((Glycemic) register).getGlycemicRate());
 
             } else if (register instanceof Obesity) {
                 txt_title.concat("Weight: " + ((Obesity) register).getWeight());
-                txt_title.concat(" Fat Rate: " + ((Obesity) register).getFatRate());
+                txt_title.concat(" Fat Rate: " + ((Obesity) register).getBodyfat());
             }
 
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             viewHolder.txt_view_title.setText(txt_title);
-            if(register.getDateTime() != null) {
-                viewHolder.txt_view_date.setText(dateFormat.format(register.getDateTime()));
-                viewHolder.txt_view_time.setText(timeFormat.format(register.getDateTime()));
+            if(register.getTimestamp() != null) {
+                viewHolder.txt_view_date.setText(dateFormat.format(register.getTimestamp()));
+                viewHolder.txt_view_time.setText(timeFormat.format(register.getTimestamp()));
             }
         }
 

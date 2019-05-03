@@ -1,33 +1,43 @@
 package myhealth.ufscar.br.myhealth.data.collect;
 
 public class Cardiac extends Register {
-    private Float systolicPressure;
-    private Float diastolicPressure;
-    private Integer pulse;
+    private Integer systolic;
+    private Integer diastolic;
+    private Integer heartBeats;
     private Float weight;
 
-    public Float getSystolicPressure() {
-        return systolicPressure;
+    public Cardiac() {
     }
 
-    public void setSystolicPressure(Float systolicPressure) {
-        this.systolicPressure = systolicPressure;
+    public Cardiac(Integer systolic, Integer diastolic, Integer heartBeats, Float weight) {
+        this.systolic = systolic;
+        this.diastolic = diastolic;
+        this.heartBeats = heartBeats;
+        this.weight = weight;
     }
 
-    public Float getDiastolicPressure() {
-        return diastolicPressure;
+    public Integer getSystolic() {
+        return systolic;
     }
 
-    public void setDiastolicPressure(Float diastolicPressure) {
-        this.diastolicPressure = diastolicPressure;
+    public void setSystolic(Integer systolic) {
+        this.systolic = systolic;
     }
 
-    public Integer getPulse() {
-        return pulse;
+    public Integer getDiastolic() {
+        return diastolic;
     }
 
-    public void setPulse(Integer pulse) {
-        this.pulse = pulse;
+    public void setDiastolic(Integer diastolic) {
+        this.diastolic = diastolic;
+    }
+
+    public Integer getHeartBeats() {
+        return heartBeats;
+    }
+
+    public void setHeartBeats(Integer heartBeats) {
+        this.heartBeats = heartBeats;
     }
 
     public Float getWeight() {

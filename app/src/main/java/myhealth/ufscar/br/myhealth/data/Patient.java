@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Patient extends User implements Serializable {
-    @SerializedName("susNumber")
+    @SerializedName("sus_number")
     private String susNumber;
     @SerializedName("name")
     private String name;
-    @SerializedName("dateOfBirth")
+    @SerializedName("date_of_birth")
     private String dateOfBirth;
     @SerializedName("gender")
     private Character gender;
-    @SerializedName("placeOfBirth")
+    @SerializedName("place_of_birth")
     private String placeOfBirth;
-    @SerializedName("mothersName")
+    @SerializedName("mothers_name")
     private String mothersName;
     @SerializedName("address")
     private Address address;

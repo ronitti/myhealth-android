@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
+import android.support.v4.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,11 +22,13 @@ import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.PatientMonitoring;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
+import myhealth.ufscar.br.myhealth.tasks.FrequencyRegisterTask;
 import myhealth.ufscar.br.myhealth.tasks.PatientRegisterTask;
 import myhealth.ufscar.br.myhealth.tasks.UserRegisterTask;
 
 public class RegisterActivity extends AppCompatActivity implements
-        UserRegisterTask.OnTaskInteraction, PatientRegisterTask.OnTaskInteraction{
+        UserRegisterTask.OnTaskInteraction, PatientRegisterTask.OnTaskInteraction,
+        FrequencyRegisterTask.OnTaskInteraction{
 
     private ViewPager mPager;
     private PagerAdapter pagerAdapter;
@@ -88,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
         SectionData.PATIENT = new Patient();
         SectionData.PATIENT_MONITORING = new PatientMonitoring();
+        SectionData.PATIENT_MONITORING.setPatient(SectionData.PATIENT);
 
         btnNext = findViewById(R.id.action_next);
         btnBack = findViewById(R.id.action_back);
@@ -112,14 +115,19 @@ public class RegisterActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 if(currentStep == SignUpStep.ACCESS_DATA){
+                    nextStep();
                     new UserRegisterTask(RegisterActivity .this).execute(SectionData.PATIENT.getEmail(), SectionData.PATIENT.getPassword());
                 }else if(currentStep == SignUpStep.ADDRESS){
+                    nextStep();
                     new PatientRegisterTask(RegisterActivity.this).execute(SectionData.PATIENT);
                 }else if(currentStep == SignUpStep.SETTINGS_SUCCESS) {
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                 }else {
-                    if (currentStep == SignUpStep.MONITORING_HYPERTENSION_SETTINGS) {
+                    if (currentStep == SignUpStep.MONITORING_OBESITY_SETTINGS) {
+                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.OBESITY.getId(),new Pair<>(NCD.OBESITY, frequency));
+                        frequency = new Frequency();
+                    }else if (currentStep == SignUpStep.MONITORING_HYPERTENSION_SETTINGS) {
                         SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.HYPERTENSION.getId(),new Pair<>(NCD.HYPERTENSION, frequency));
                         frequency = new Frequency();
                     }else if(currentStep == SignUpStep.MONITORING_CORONARY_SETTINGS){
@@ -128,13 +136,14 @@ public class RegisterActivity extends AppCompatActivity implements
                     }else if (currentStep == SignUpStep.MONITORING_DIABETES_SETTINGS) {
                         SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.DIABETES.getId(),new Pair<>(NCD.DIABETES, frequency));
                         frequency = new Frequency();
-                    }else if (currentStep == SignUpStep.MONITORING_OBESITY_SETTINGS) {
-                        SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.OBESITY.getId(),new Pair<>(NCD.OBESITY, frequency));
-                        frequency = new Frequency();
                     }
                     SignUpStep step = nextStep();
-                    mPager.setCurrentItem(step.step);
-                    lblStepTitle.setText(getString(step.getStepTitle()));
+                    if(step == SignUpStep.SETTINGS_SUCCESS){
+                        new FrequencyRegisterTask(RegisterActivity.this).execute(SectionData.PATIENT_MONITORING);
+                    }else {
+                        mPager.setCurrentItem(step.step);
+                        lblStepTitle.setText(getString(step.getStepTitle()));
+                    }
                 }
             }
         });
@@ -165,8 +174,8 @@ public class RegisterActivity extends AppCompatActivity implements
     @Override
     public void onTaskFinsh(boolean result) {
         if(result) {
-            mPager.setCurrentItem(mPager.getCurrentItem() + 1);
-            lblStepTitle.setText(getString(nextStep().getStepTitle()));
+            mPager.setCurrentItem(currentStep.step);
+            lblStepTitle.setText(getString(currentStep.getStepTitle()));
         }
     }
 

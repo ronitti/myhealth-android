@@ -24,6 +24,7 @@ public class Frequency {
 
     public Frequency(){
         daysOfWeek = new Boolean[8];
+        startDate = new Date();
     }
 
     public Frequency(FrequencyType frequencyType, DayOfWeek[] daysOfWeek, Integer timesADay) {

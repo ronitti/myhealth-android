@@ -2,7 +2,15 @@ package myhealth.ufscar.br.myhealth.data.collect;
 
 public class Obesity extends Register{
     private Float weight;
-    private Float fatRate;
+    private Float bodyfat;
+
+    public Obesity() {
+    }
+
+    public Obesity(Float weight, Float bodyfat) {
+        this.weight = weight;
+        this.bodyfat = bodyfat;
+    }
 
     public Float getWeight() {
         return weight;
@@ -12,11 +20,11 @@ public class Obesity extends Register{
         this.weight = weight;
     }
 
-    public Float getFatRate() {
-        return fatRate;
+    public Float getBodyfat() {
+        return bodyfat;
     }
 
-    public void setFatRate(Float fatRate) {
-        this.fatRate = fatRate;
+    public void setBodyfat(Float bodyfat) {
+        this.bodyfat = bodyfat;
     }
 }

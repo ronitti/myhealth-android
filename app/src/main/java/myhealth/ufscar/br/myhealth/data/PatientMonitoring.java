@@ -1,11 +1,13 @@
 package myhealth.ufscar.br.myhealth.data;
 
-import android.util.Pair;
+import android.support.v4.util.Pair;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import myhealth.ufscar.br.myhealth.data.collect.frequency.DayOfWeek;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
 
 public class PatientMonitoring implements Serializable {
     private Patient patient;
@@ -15,10 +17,10 @@ public class PatientMonitoring implements Serializable {
     public PatientMonitoring(){
         ncdFrequency = new ArrayList<>();
         ncds = new boolean[4];
-        ncdFrequency.add(new Pair<>(NCD.HYPERTENSION, Frequency.CARDIAC_DEFAULT));
-        ncdFrequency.add(new Pair<>(NCD.CORONARY_ARTERY_DISEASE, Frequency.CARDIAC_DEFAULT));
-        ncdFrequency.add(new Pair<>(NCD.DIABETES, Frequency.DIABETES_DEFAULT));
-        ncdFrequency.add(new Pair<>(NCD.OBESITY, Frequency.OBESITY_DEFAULT));
+        ncdFrequency.add(new Pair<>(NCD.HYPERTENSION, new Frequency(FrequencyType.DAILY, new DayOfWeek[]{DayOfWeek.EVERYDAY}, 1)));
+        ncdFrequency.add(new Pair<>(NCD.CORONARY_ARTERY_DISEASE, new Frequency(FrequencyType.DAILY, new DayOfWeek[]{DayOfWeek.EVERYDAY}, 1)));
+        ncdFrequency.add(new Pair<>(NCD.DIABETES, new Frequency(FrequencyType.DAILY, new DayOfWeek[]{DayOfWeek.EVERYDAY}, 4)));
+        ncdFrequency.add(new Pair<>(NCD.OBESITY, new Frequency(FrequencyType.WEEKLY, new DayOfWeek[]{DayOfWeek.SUNDAY}, 1)));
     }
 
     public boolean[] getNcds() {

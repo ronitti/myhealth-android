@@ -3,14 +3,12 @@ package myhealth.ufscar.br.myhealth.tasks;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.exception.WrongPasswordException;
-import myhealth.ufscar.br.myhealth.ui.MainActivity;
 import myhealth.ufscar.br.myhealth.usecases.UserLogin;
 
 public class UserLoginTask extends AsyncTask<String, Integer, User> {
@@ -62,11 +60,7 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(alertDialog.getContext().getString(R.string.dialog_btn_try_again));
         }else{
-            Intent intent = new Intent(alertDialog.getContext(), MainActivity.class);
-            alertDialog.getContext().startActivity(intent);
-            alertDialog.cancel();
-
-
+            new PatientLoadTask(alertDialog.getContext()).execute(user);
         }
     }
 }
