@@ -5,7 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
+
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.exception.ExistingSusNumberException;
@@ -64,6 +67,7 @@ public class PatientRegisterTask extends AsyncTask<Patient, User, Boolean> {
             alertDialog.cancel();
         }
         if (mListener != null) {
+            SectionData.PATIENT_REGISTERS = new ArrayList<>();
             mListener.onTaskFinsh(code == 0);
         }
     }
