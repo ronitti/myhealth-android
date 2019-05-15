@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.CollectGlycemicFragment">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/txt_glycemic"
+            style="@style/AppTheme.EditTextWithBorder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_txt_lg"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/collect_data_glycemic_glycemic"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/txt_observation"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            style="@style/AppTheme.EditTextWithBorder"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/collect_data_observation"
+            android:inputType="textMultiLine" />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

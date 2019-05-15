@@ -54,11 +54,11 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
                 txt_title += (" Pulses: " + ((Cardiac) register).getHeartBeats());
                 txt_title += (" Weight: " + ((Cardiac) register).getWeight());
             } else if (register instanceof Glycemic) {
-                txt_title.concat("Glycemic Rate: " + ((Glycemic) register).getGlycemicRate());
+                txt_title += ("Glycemic Rate: " + ((Glycemic) register).getGlycemicRate());
 
             } else if (register instanceof Obesity) {
-                txt_title.concat("Weight: " + ((Obesity) register).getWeight());
-                txt_title.concat(" Fat Rate: " + ((Obesity) register).getBodyfat());
+                txt_title += ("Weight: " + ((Obesity) register).getWeight());
+                txt_title += (" Fat Rate: " + ((Obesity) register).getBodyfat());
             }
 
 

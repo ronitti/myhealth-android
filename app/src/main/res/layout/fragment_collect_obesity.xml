@@ -5,53 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.CollectCardiacFragment">
+    tools:context=".ui.fragments.CollectObesityFragment">
 
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <EditText
-            android:id="@+id/txt_systolic"
-            style="@style/AppTheme.EditTextWithBorder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_edit_txt_lg"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="@string/collect_data_cadiac_systolic"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <EditText
-            android:id="@+id/txt_diastolic"
-            style="@style/AppTheme.EditTextWithBorder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_edit_txt_lg"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="@string/collect_data_cadiac_diastolic"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <EditText
-            android:id="@+id/txt_heart_beats"
-            style="@style/AppTheme.EditTextWithBorder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_edit_txt_lg"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="@string/collect_data_cadiac_heart_beats"/>
-    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -64,9 +19,23 @@
             android:layout_height="@dimen/height_edit_txt_lg"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="@string/collect_data_cadiac_weight"/>
+            android:inputType="number"
+            android:hint="@string/collect_data_obesity_weight"/>
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/txt_bodyfat"
+            style="@style/AppTheme.EditTextWithBorder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_txt_lg"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/collect_data_obesity_bodyfat"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout

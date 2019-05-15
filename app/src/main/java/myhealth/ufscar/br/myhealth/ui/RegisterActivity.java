@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.util.Pair;
+import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +43,14 @@ public class RegisterActivity extends AppCompatActivity implements
     private boolean[] activatedSteps;
     private Integer currentStepIndex;
     private SignUpStep currentStep;
+
+    private static final int [] STEPS_ID = {
+      R.id.step0,
+      R.id.step1,
+      R.id.step2,
+      R.id.step3,
+      R.id.step4
+    };
 
     private SignUpStep nextStep(){
         while(currentStepIndex <= registerSteps.size() && !activatedSteps[++currentStepIndex]);
@@ -145,7 +155,9 @@ public class RegisterActivity extends AppCompatActivity implements
                         lblStepTitle.setText(getString(step.getStepTitle()));
                     }
                 }
+                setStepView(currentStep.step);
             }
+
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,8 +167,12 @@ public class RegisterActivity extends AppCompatActivity implements
                     mPager.setCurrentItem(step.step);
                     lblStepTitle.setText(getString(step.getStepTitle()));
                 }
+                setStepView(currentStep.step);
             }
         });
+
+
+        setStepView(currentStep.step);
     }
 
     @Override
@@ -177,6 +193,23 @@ public class RegisterActivity extends AppCompatActivity implements
             mPager.setCurrentItem(currentStep.step);
             lblStepTitle.setText(getString(currentStep.getStepTitle()));
         }
+    }
+
+    public void setStepView(int step) {
+        TextView step_view;
+
+        for (int i = 0; i < STEPS_ID.length; i++) {
+            step_view = findViewById(STEPS_ID[i]);
+            step_view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_unselected));
+            step_view.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.darkGray));
+        }
+        if (step >= STEPS_ID.length) {
+            step = STEPS_ID.length-1;
+        }
+        step_view = findViewById(STEPS_ID[step]);
+        step_view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_selected));
+        step_view.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+
     }
 
 

@@ -16,17 +16,14 @@ import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.Patient;
-import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
+import myhealth.ufscar.br.myhealth.data.collect.Glycemic;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.tasks.CollectDataTask;
 
-public class CollectCardiacFragment extends CustonFragment {
+public class CollectGlycemicFragment extends CustonFragment {
 
-    private EditText txtSystolic;
-    private EditText txtDiastolic;
-    private EditText txtHeartBeats;
-    private EditText txtWeight;
+    private EditText txtGlycemic;
     private EditText txtObservation;
 
     private Button btnSave;
@@ -37,7 +34,7 @@ public class CollectCardiacFragment extends CustonFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         dao = new RegisterDAO(getContext());
-        View view = inflater.inflate(R.layout.fragment_collect_cardiac, container, false);
+        View view = inflater.inflate(R.layout.fragment_collect_glycemic, container, false);
 
 
         inicializeComponents(view);
@@ -52,10 +49,7 @@ public class CollectCardiacFragment extends CustonFragment {
 
 
     private void inicializeComponents(final View view) {
-        txtSystolic= view.findViewById(R.id.txt_systolic);
-        txtDiastolic = view.findViewById(R.id.txt_diastolic);
-        txtHeartBeats = view.findViewById(R.id.txt_heart_beats);
-        txtWeight = view.findViewById(R.id.txt_weight);
+        txtGlycemic= view.findViewById(R.id.txt_glycemic);
         txtObservation = view.findViewById(R.id.txt_observation);
 
 
@@ -72,13 +66,10 @@ public class CollectCardiacFragment extends CustonFragment {
 
     @Override
     public boolean save() {
-        Cardiac c = new Cardiac();
+        Glycemic c = new Glycemic();
         c.setTimestamp(new Date());
-        c.setNcd(NCD.HYPERTENSION);
-        c.setDiastolic(Integer.parseInt(txtDiastolic.getText().toString()));
-        c.setSystolic(Integer.parseInt(txtSystolic.getText().toString()));
-        c.setWeight(Float.parseFloat(txtWeight.getText().toString()));
-        c.setHeartBeats(Integer.parseInt(txtHeartBeats.getText().toString()));
+        c.setNcd(NCD.DIABETES);
+        c.setGlycemicRate(Integer.parseInt(txtGlycemic.getText().toString()));
         c.setObservation(txtObservation.getText().toString());
 
         //new CollectDataTask(getActivity()).execute(new Pair<Patient, Register>(SectionData.PATIENT, c));

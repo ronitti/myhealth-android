@@ -17,11 +17,13 @@ import android.widget.Toast;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.ui.fragments.CollectCardiacFragment;
+import myhealth.ufscar.br.myhealth.ui.fragments.CollectGlycemicFragment;
+import myhealth.ufscar.br.myhealth.ui.fragments.CollectObesityFragment;
 import myhealth.ufscar.br.myhealth.ui.fragments.CustonFragment;
 
 public class CollectActivity extends AppCompatActivity {
 
-    private int ncd_type = 0;
+    private int ncd_type = 1;
     CustonFragment fragment = null;
 
     Button btnSave;
@@ -33,9 +35,15 @@ public class CollectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_collect);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.ncd_type = getIntent().getIntExtra("NCDTYPE", 9);
 
-        if (ncd_type == 0) {
+
+        if (ncd_type == NCD.HYPERTENSION.getId() || ncd_type == NCD.CORONARY_ARTERY_DISEASE.getId()) {
             fragment = new CollectCardiacFragment();
+        } else  if (ncd_type == NCD.DIABETES.getId()){
+            fragment = new CollectGlycemicFragment();
+        } else  if (ncd_type == NCD.OBESITY.getId()) {
+            fragment = new CollectObesityFragment();
         }
 
         replaceFragment(fragment);

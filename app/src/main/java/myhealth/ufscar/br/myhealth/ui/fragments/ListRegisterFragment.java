@@ -63,16 +63,17 @@ public class ListRegisterFragment extends Fragment {
                 dao.save(register);
         }
         SectionData.PATIENT_REGISTERS = new ArrayList<>(dao.listRegisters());
-        //registerList = dao.listRegisters();
+
         */
-        registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
+        //registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
+        registerList = dao.listRegisters();
     }
 
 
     public void updateList() {
         registerList.clear();
-        //registerList = dao.listRegisters();
-        registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
+        registerList = dao.listRegisters();
+        //registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
         adapter.setList(registerList);
         adapter.notifyDataSetChanged();
     }

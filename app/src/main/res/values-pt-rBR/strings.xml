@@ -77,4 +77,36 @@
     <string name="register_hint_gender">Sexo</string>
     <string name="register_lbl_female">Feminino</string>
     <string name="register_lbl_male">Masculino</string>
+
+
+    <string name="collect_data_observation">Observação</string>
+
+    <string name="collect_data_cadiac_systolic">Pressão sistólica</string>
+    <string name="collect_data_cadiac_diastolic">Pressão diastólica</string>
+    <string name="collect_data_cadiac_heart_beats">Batimentos cardiácos</string>
+    <string name="collect_data_cadiac_weight">Peso</string>
+
+
+    <string name="collect_data_glycemic_glycemic">Índice glicêmico</string>
+
+    <string name="collect_data_obesity_weight">Peso</string>
+    <string name="collect_data_obesity_bodyfat">Taxa de gordura corpórea</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+
+
+    <string name="list_register_title">Histórico de coleta</string>
+
+
+
+
 </resources>

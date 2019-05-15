@@ -2,7 +2,6 @@ package myhealth.ufscar.br.myhealth.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,9 +19,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
+
 import java.util.List;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
@@ -34,20 +37,19 @@ public class MainActivity extends AppCompatActivity
 
     ListRegisterFragment fragment;
 
+    FloatingActionMenu fab_menu;
+    FloatingActionButton fabHypertension;
+    FloatingActionButton fabDiabetes;
+    FloatingActionButton fabObesity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchCollect();
-            }
-        });
 
+        initializeComponents();
         fragment = new ListRegisterFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -102,17 +104,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_profile) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
 
         }
 
@@ -122,8 +116,44 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void launchCollect() {
+    public void initializeComponents() {
+
+        this.fab_menu = findViewById(R.id.fab);
+
+        this.fabHypertension = findViewById(R.id.fab_item_hypertension);
+        this.fabDiabetes = findViewById(R.id.fab_item_diabetes);
+        this.fabObesity = findViewById(R.id.fab_item_obesity);
+
+        fabHypertension.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fab_menu.close(true);
+                launchCollect(NCD.HYPERTENSION);
+            }
+        });
+
+        fabDiabetes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fab_menu.close(true);
+                launchCollect(NCD.DIABETES);
+            }
+        });
+
+        fabObesity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fab_menu.close(true);
+                launchCollect(NCD.OBESITY);
+            }
+        });
+
+    }
+
+
+    public void launchCollect(NCD type) {
         Intent intent = new Intent(this, CollectActivity.class);
+        intent.putExtra("NCDTYPE", type.getId() );
         startActivity(intent);
     }
 
