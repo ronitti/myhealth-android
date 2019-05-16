@@ -51,16 +51,16 @@ public class UserTest {
     @Test (expected = NonRegisteredUserException.class)
     public void t05_shouldNotAuthenticateNonRegisteredUser(){
         System.out.println("Running test: should not authenticate non registered user");
-        assertNull(UserLogin.login("teste@novo.com", "teste"));
+        assertNull(UserLogin.execute("teste@novo.com", "teste"));
     }
     @Test (expected = WrongPasswordException.class)
     public void t06_shouldNotAuthenticateUserWithWrongPassword(){
         System.out.println("Running test: should not authenticate user with incorrect password");
-        assertNull(UserLogin.login("teste@teste.com", "novo"));
+        assertNull(UserLogin.execute("teste@teste.com", "novo"));
     }
     @Test
     public void t07_shouldAuthenticateUserProperly(){
         System.out.println("Running test: should authenticate user properly");
-        assertNotNull(UserLogin.login("teste@teste.com", "teste"));
+        assertNotNull(UserLogin.execute("teste@teste.com", "teste"));
     }
 }

@@ -6,13 +6,14 @@ import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.exception.ExistingSusNumberException;
 import myhealth.ufscar.br.myhealth.repository.MyHealthClient;
 import myhealth.ufscar.br.myhealth.repository.MyHealthService;
-import myhealth.ufscar.br.myhealth.repository.query.PatientRegisterResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientCreateRequest;
+import myhealth.ufscar.br.myhealth.repository.query.PatientCreateResponse;
 import retrofit2.Response;
 
 public class PatientRegister {
     public static boolean register(Patient patient){
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
-        Response<PatientRegisterResponse> responseData;
+        Response<PatientCreateResponse> responseData;
         try {
             responseData = service.createPatient(patient).execute();
             if(responseData.body() != null && !responseData.body().isSuccess()){

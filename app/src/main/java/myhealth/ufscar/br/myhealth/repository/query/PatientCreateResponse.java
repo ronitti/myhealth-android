@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import myhealth.ufscar.br.myhealth.data.Patient;
 
-public class PatientRegisterResponse extends ResponseData{
+public class PatientCreateResponse extends ResponseData{
 
     @SerializedName("patient_data")
     private Patient patientData;

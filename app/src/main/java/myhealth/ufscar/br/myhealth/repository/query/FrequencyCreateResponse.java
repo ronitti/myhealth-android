@@ -2,7 +2,7 @@ package myhealth.ufscar.br.myhealth.repository.query;
 
 import com.google.gson.annotations.SerializedName;
 
-public class FrequencyRegisterResponse extends ResponseData{
+public class FrequencyCreateResponse extends ResponseData{
 
     @SerializedName("frequency_id")
     private Integer frequencyId;

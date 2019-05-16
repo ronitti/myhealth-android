@@ -111,4 +111,6 @@
 
 
     <string name="list_register_title">History of Data Collection</string>
+    <string name="dialog_error_no_connection">Unable to connect to server</string>
+    <string name="hint_error_invalid_password">The password is invalid</string>
 </resources>

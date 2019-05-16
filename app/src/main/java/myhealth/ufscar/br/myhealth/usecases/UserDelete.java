@@ -7,6 +7,7 @@ import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.exception.WrongPasswordException;
 import myhealth.ufscar.br.myhealth.repository.MyHealthClient;
 import myhealth.ufscar.br.myhealth.repository.MyHealthService;
+import myhealth.ufscar.br.myhealth.repository.query.UserLoadRequest;
 import myhealth.ufscar.br.myhealth.repository.query.UserLoadResponse;
 import retrofit2.Response;
 

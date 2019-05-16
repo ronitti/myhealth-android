@@ -4,16 +4,19 @@ import java.util.List;
 
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
-import myhealth.ufscar.br.myhealth.repository.query.FrequencyRegisterRequest;
-import myhealth.ufscar.br.myhealth.repository.query.FrequencyRegisterResponse;
-import myhealth.ufscar.br.myhealth.repository.query.NCDRegisterRequest;
-import myhealth.ufscar.br.myhealth.repository.query.NCDRegisterResponse;
+import myhealth.ufscar.br.myhealth.repository.query.FrequencyCreateRequest;
+import myhealth.ufscar.br.myhealth.repository.query.FrequencyCreateResponse;
+import myhealth.ufscar.br.myhealth.repository.query.MonitoringCreateRequest;
+import myhealth.ufscar.br.myhealth.repository.query.MonitoringCreateResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientCreateRequest;
 import myhealth.ufscar.br.myhealth.repository.query.PatientLoadRequest;
-import myhealth.ufscar.br.myhealth.repository.query.PatientRegisterResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientCreateResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientLoadResponse;
 import myhealth.ufscar.br.myhealth.repository.query.RegisterCreateRequest;
 import myhealth.ufscar.br.myhealth.repository.query.RegisterCreateResponse;
 import myhealth.ufscar.br.myhealth.repository.query.RegisterListRequest;
 import myhealth.ufscar.br.myhealth.repository.query.RegisterLoadResponse;
+import myhealth.ufscar.br.myhealth.repository.query.UserLoadRequest;
 import myhealth.ufscar.br.myhealth.repository.query.UserLoadResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,28 +25,32 @@ import retrofit2.http.POST;
 public interface MyHealthService {
 
     @POST("user/signUp")
-    Call<UserLoadResponse> signUp(@Body User user);
+    Call<UserLoadResponse> signUp(@Body User request);
 
     @POST("user/signIn")
-    Call<UserLoadResponse> signIn(@Body User user);
+    Call<UserLoadResponse> signIn(@Body User request);
 
     @POST("user/delete")
     Call<UserLoadResponse> deleteUser(@Body User user);
 
+
     @POST("patient/create")
-    Call<PatientRegisterResponse> createPatient(@Body Patient patient);
+    Call<PatientCreateResponse> createPatient(@Body Patient request);
 
     @POST("patient/load")
-    Call<PatientRegisterResponse> loadPatient(@Body PatientLoadRequest request);
+    Call<PatientLoadResponse> loadPatient(@Body PatientLoadRequest request);
 
     @POST("patient/loadByUser")
-    Call<PatientRegisterResponse> loadPatientByUser(@Body PatientLoadRequest request);
+    Call<PatientLoadResponse> loadPatientByUser(@Body PatientLoadRequest request);
+
 
     @POST("monitor/create")
-    Call<NCDRegisterResponse> createMonitor(@Body NCDRegisterRequest request);
+    Call<MonitoringCreateResponse> createMonitor(@Body MonitoringCreateRequest request);
+
 
     @POST("frequency/create")
-    Call<FrequencyRegisterResponse> createFrequency(@Body FrequencyRegisterRequest request);
+    Call<FrequencyCreateResponse> createFrequency(@Body FrequencyCreateRequest request);
+
 
     @POST("register/create")
     Call<RegisterCreateResponse> createRegister(@Body RegisterCreateRequest request);

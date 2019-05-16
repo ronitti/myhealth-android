@@ -1,9 +1,10 @@
 package myhealth.ufscar.br.myhealth.utils;
 
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 
-public abstract class MaskEditUtils {
+public abstract class EditTextUtils {
 
     public static final String FORMAT_CEP = "#####-###";
     public static final String FORMAT_SUS_NUMBER = "### #### #### ####";
@@ -56,5 +57,16 @@ public abstract class MaskEditUtils {
 
     public static String unmask(final String s) {
         return s.replaceAll("[.]", "").replaceAll("[-]", "").replaceAll("[/]", "").replaceAll("[(]", "").replaceAll("[ ]","").replaceAll("[:]", "").replaceAll("[)]", "");
+    }
+
+
+    public static boolean isValidEmail(CharSequence target) {
+        if (!TextUtils.isEmpty(target)) {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+        return false;
+    }
+    public static boolean isValidPassword(CharSequence target){
+        return !TextUtils.isEmpty(target);
     }
 }

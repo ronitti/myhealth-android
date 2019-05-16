@@ -5,21 +5,21 @@ import com.google.gson.annotations.SerializedName;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
 import myhealth.ufscar.br.myhealth.utils.DateTime;
 
-public class FrequencyRegisterRequest {
+public class FrequencyCreateRequest {
     @SerializedName("type")
     private Integer type;
     @SerializedName("days_of_week")
-    private Boolean daysOfWeek[];
+    private Boolean[] daysOfWeek;
     @SerializedName("custom_every")
     private Integer customEvery;
     @SerializedName("times_a_day")
     private Integer timesADay;
     @SerializedName("hours_of_day")
-    private String hoursOfDay[];
+    private String[] hoursOfDay;
     @SerializedName("start_date")
     private String startDate;
 
-    public FrequencyRegisterRequest(Frequency frequency) {
+    public FrequencyCreateRequest(Frequency frequency) {
         this.type = frequency.getFrequencyType().getType();
         this.daysOfWeek = frequency.getDaysOfWeek();
         this.customEvery = frequency.getCustomEvery();

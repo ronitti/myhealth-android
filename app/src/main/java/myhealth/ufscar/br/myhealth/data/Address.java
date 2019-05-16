@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Address implements Serializable {
-    @SerializedName("postal_code")
+    @SerializedName("postcode")
     private String postcode;
     @SerializedName("thoroughfare")
     private String thoroughfare;

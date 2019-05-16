@@ -8,13 +8,14 @@ import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.repository.MyHealthClient;
 import myhealth.ufscar.br.myhealth.repository.MyHealthService;
 import myhealth.ufscar.br.myhealth.repository.query.PatientLoadRequest;
-import myhealth.ufscar.br.myhealth.repository.query.PatientRegisterResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientCreateResponse;
+import myhealth.ufscar.br.myhealth.repository.query.PatientLoadResponse;
 import retrofit2.Response;
 
 public class PatientLoad {
     public static Patient load(User user){
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
-        Response<PatientRegisterResponse> responseData;
+        Response<PatientLoadResponse> responseData;
         try {
             responseData = service.loadPatientByUser(new PatientLoadRequest(user)).execute();
             if(responseData.body() != null && !responseData.body().isSuccess()){
@@ -30,7 +31,7 @@ public class PatientLoad {
     }
     public static Patient load(String susNumber){
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
-        Response<PatientRegisterResponse> responseData;
+        Response<PatientLoadResponse> responseData;
         try {
             responseData = service.loadPatient(new PatientLoadRequest(susNumber)).execute();
             if(responseData.body() != null && !responseData.body().isSuccess()){
