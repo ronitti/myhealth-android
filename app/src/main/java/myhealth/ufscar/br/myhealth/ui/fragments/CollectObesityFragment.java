@@ -3,7 +3,6 @@ package myhealth.ufscar.br.myhealth.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +12,11 @@ import android.widget.EditText;
 import java.util.Date;
 
 import myhealth.ufscar.br.myhealth.R;
-import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
-import myhealth.ufscar.br.myhealth.data.Patient;
-import myhealth.ufscar.br.myhealth.data.collect.Glycemic;
 import myhealth.ufscar.br.myhealth.data.collect.Obesity;
-import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
-import myhealth.ufscar.br.myhealth.tasks.CollectDataTask;
 
-public class CollectObesityFragment extends CustonFragment {
+public class CollectObesityFragment extends CustomFragment {
 
     private EditText txtWeight;
     private EditText txtBodyFat;

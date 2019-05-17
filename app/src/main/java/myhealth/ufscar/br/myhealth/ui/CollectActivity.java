@@ -3,28 +3,25 @@ package myhealth.ufscar.br.myhealth.ui;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.ui.fragments.CollectCardiacFragment;
 import myhealth.ufscar.br.myhealth.ui.fragments.CollectGlycemicFragment;
 import myhealth.ufscar.br.myhealth.ui.fragments.CollectObesityFragment;
-import myhealth.ufscar.br.myhealth.ui.fragments.CustonFragment;
+import myhealth.ufscar.br.myhealth.ui.fragments.CustomFragment;
 
 public class CollectActivity extends AppCompatActivity {
 
     private int ncd_type = 1;
-    CustonFragment fragment = null;
+    CustomFragment fragment = null;
 
     Button btnSave;
 

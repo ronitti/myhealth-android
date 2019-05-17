@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class FrequencyCreateResponse extends ResponseData{
 
     @SerializedName("frequency_id")
+
     private Integer frequencyId;
 
     public Integer getFrequencyId() {

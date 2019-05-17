@@ -12,6 +12,7 @@ public class UserLogin {
 
     public static User execute(String email, String password) throws IOException {
         UserLoadResponse response = UserRepository.login(new User(email, password));
+
         if(!response.isSuccess()) {
             if (response.getMessage().equals("User not registered"))
                 throw new NonRegisteredUserException();

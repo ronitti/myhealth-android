@@ -2,8 +2,7 @@ package myhealth.ufscar.br.myhealth.repository.query;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MonitoringCreateRequest {
-
+public class MonitoringData {
     @SerializedName("patient_id")
     private String patientId;
     @SerializedName("ncd_id")
@@ -11,7 +10,7 @@ public class MonitoringCreateRequest {
     @SerializedName("frequency_id")
     private Integer frequencyId;
 
-    public MonitoringCreateRequest(String patientId, Integer ncdId, Integer frequencyId) {
+    public MonitoringData(String patientId, Integer ncdId, Integer frequencyId) {
         this.patientId = patientId;
         this.ncdId = ncdId;
         this.frequencyId = frequencyId;

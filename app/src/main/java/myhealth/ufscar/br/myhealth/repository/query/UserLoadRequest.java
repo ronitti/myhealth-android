@@ -6,18 +6,18 @@ import myhealth.ufscar.br.myhealth.data.User;
 
 public class UserLoadRequest extends ResponseData{
 
-    @SerializedName("user_data")
-    private User userData;
+    @SerializedName("request_data")
+    private User user;
 
-    public UserLoadRequest(User userData) {
-        this.userData = userData;
+    public UserLoadRequest(User user) {
+        this.user = user;
     }
 
-    public User getUserData() {
-        return userData;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserData(User userData) {
-        this.userData = userData;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

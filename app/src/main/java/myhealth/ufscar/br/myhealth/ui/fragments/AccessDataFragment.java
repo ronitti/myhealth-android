@@ -67,7 +67,7 @@ public class AccessDataFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus)
-                    SectionData.PATIENT.setSusNumber(txtSUSNumber.getText().toString());
+                    SectionData.PATIENT.setSusNumber(EditTextUtils.unmask(txtSUSNumber.getText().toString()));
             }
         });
         txtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {

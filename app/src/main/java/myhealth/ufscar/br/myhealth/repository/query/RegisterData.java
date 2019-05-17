@@ -11,7 +11,7 @@ import myhealth.ufscar.br.myhealth.data.collect.Obesity;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.utils.DateTime;
 
-public class RegisterLoadRequest extends ResponseData{
+public class RegisterData {
     @SerializedName("patient_id")
     private String patientId;
     @SerializedName("ncd_id")

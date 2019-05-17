@@ -7,6 +7,7 @@ import myhealth.ufscar.br.myhealth.data.User;
 public class UserLoadResponse extends ResponseData{
 
     @SerializedName("user_data")
+
     private User userData;
 
     public User getUserData() {

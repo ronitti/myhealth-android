@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
 import myhealth.ufscar.br.myhealth.utils.DateTime;
 
-public class FrequencyCreateRequest {
+public class FrequencyData {
     @SerializedName("type")
     private Integer type;
     @SerializedName("days_of_week")
@@ -19,7 +19,7 @@ public class FrequencyCreateRequest {
     @SerializedName("start_date")
     private String startDate;
 
-    public FrequencyCreateRequest(Frequency frequency) {
+    public FrequencyData(Frequency frequency) {
         this.type = frequency.getFrequencyType().getType();
         this.daysOfWeek = frequency.getDaysOfWeek();
         this.customEvery = frequency.getCustomEvery();
@@ -28,7 +28,7 @@ public class FrequencyCreateRequest {
         for(int i=0; i<frequency.getHoursOfDay().length; i++){
             this.hoursOfDay[i] = DateTime.SIMPLE_TIME_FORMAT.format(frequency.getHoursOfDay()[i]);
         }
-        this.startDate = DateTime.SIMPLE_DATE_FORMAT.format(frequency.getStartDate());
+        this.startDate = DateTime.SIMPLE_TIMESTAMP_FORMAT.format(frequency.getStartDate());
     }
 
     public Integer getType() {
@@ -78,4 +78,5 @@ public class FrequencyCreateRequest {
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
+
 }
