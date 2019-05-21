@@ -17,7 +17,8 @@ import myhealth.ufscar.br.myhealth.repository.query.RequestData;
 import retrofit2.Response;
 
 public class PatientLoad {
-    public static Patient load(User user){
+
+    public static Patient load(User user) throws NonRegisteredUserException {
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
         Response<PatientLoadResponse> response;
         try {
@@ -37,7 +38,8 @@ public class PatientLoad {
         }
         return null;
     }
-    public static Patient load(String susNumber){
+
+    public static Patient load(String susNumber) throws NonRegisteredUserException{
         MyHealthService service = MyHealthClient.getMyHealthServiceInstance();
         Response<PatientLoadResponse> response;
         try {

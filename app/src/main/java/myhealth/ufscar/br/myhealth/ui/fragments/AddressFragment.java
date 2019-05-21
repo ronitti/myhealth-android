@@ -3,6 +3,10 @@ package myhealth.ufscar.br.myhealth.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,9 @@ import android.widget.EditText;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Address;
+import myhealth.ufscar.br.myhealth.tasks.PostalCodeTask;
+import myhealth.ufscar.br.myhealth.utils.EditTextUtils;
+import myhealth.ufscar.br.myhealth.utils.MaskEditUtil;
 
 public class AddressFragment extends Fragment {
     private EditText txtPostcode;
@@ -46,10 +53,39 @@ public class AddressFragment extends Fragment {
         txtNeighborhood = view.findViewById(R.id.txt_neighborhood);
         txtCity = view.findViewById(R.id.txt_city);
         txtState = view.findViewById(R.id.txt_state);
+
+
         initFieldsListeners();
     }
 
     public void initFieldsListeners() {
+
+
+        txtPostcode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int len = txtPostcode.getText().toString().length();
+                if (len >= 9) {
+                    Log.i("AddressFragment", "Postal code complete");
+                    PostalCodeTask task = new PostalCodeTask(getActivity());
+                    task.execute(txtPostcode.getText().toString());
+                    txtThoroughfare.requestFocus();
+                }
+            }
+        });
+
+        txtPostcode.addTextChangedListener(MaskEditUtil.mask(txtPostcode, MaskEditUtil.FORMAT_CEP));
+
         txtPostcode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

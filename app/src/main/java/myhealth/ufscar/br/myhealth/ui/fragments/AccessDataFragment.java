@@ -14,7 +14,9 @@ import android.widget.EditText;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.utils.EditTextUtils;
+import myhealth.ufscar.br.myhealth.utils.MaskEditUtil;
 import myhealth.ufscar.br.myhealth.utils.SecurityUtils;
+import myhealth.ufscar.br.myhealth.validator.CNSValidator;
 
 
 public class AccessDataFragment extends Fragment {
@@ -62,7 +64,8 @@ public class AccessDataFragment extends Fragment {
                 }
             }
         });
-        txtSUSNumber.addTextChangedListener(EditTextUtils.mask(EditTextUtils.FORMAT_SUS_NUMBER));
+        txtSUSNumber.addTextChangedListener(MaskEditUtil.mask(txtSUSNumber, MaskEditUtil.FORMAT_SUS_NUMBER));
+        txtSUSNumber.addTextChangedListener(new CNSValidator(txtSUSNumber));
         txtSUSNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

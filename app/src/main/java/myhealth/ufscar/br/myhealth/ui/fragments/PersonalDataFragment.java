@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
+import myhealth.ufscar.br.myhealth.utils.MaskEditUtil;
 
 public class PersonalDataFragment extends Fragment {
     private EditText txtName;
@@ -56,6 +57,8 @@ public class PersonalDataFragment extends Fragment {
 
             }
         });
+
+        txtDateOfBirth.addTextChangedListener(MaskEditUtil.mask(txtDateOfBirth, MaskEditUtil.FORMAT_DATE));
         txtDateOfBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

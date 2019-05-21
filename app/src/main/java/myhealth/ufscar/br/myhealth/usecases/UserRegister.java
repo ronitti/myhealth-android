@@ -21,6 +21,7 @@ public class UserRegister {
         try {
             RequestData requestData = new RequestData(new User(email, password));
             response = service.signUp(requestData).execute();
+            Log.i("UserRegister", response.body().toString());
             if( response.body() != null && !response.body().isSuccess()){
                 throw new ExistingEmailException();
             }

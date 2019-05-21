@@ -16,4 +16,11 @@ public class PatientCreateResponse extends ResponseData{
     public void setPatientData(Patient patientData) {
         this.patientData = patientData;
     }
+
+    @Override
+    public String toString() {
+        return "PatientCreateResponse{" +
+                "patientData=" + patientData +
+                '}';
+    }
 }

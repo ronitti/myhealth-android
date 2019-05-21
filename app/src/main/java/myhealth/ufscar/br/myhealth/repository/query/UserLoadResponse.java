@@ -17,4 +17,11 @@ public class UserLoadResponse extends ResponseData{
     public void setUserData(User userData) {
         this.userData = userData;
     }
+
+    @Override
+    public String toString() {
+        return "UserLoadResponse{" +
+                "userData=" + userData +
+                '}';
+    }
 }

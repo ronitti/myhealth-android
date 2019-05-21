@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class PatientRegisterTask extends AsyncTask<Patient, User, Boolean> {
     @Override
     protected Boolean doInBackground(Patient... patients) {
         try {
+            Log.i("PatientRegisterTask", patients[0].toString());
             return PatientRegister.register(patients[0]);
         }catch (ExistingSusNumberException e){
             code = 1;

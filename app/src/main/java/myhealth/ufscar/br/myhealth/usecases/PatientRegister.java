@@ -19,7 +19,9 @@ public class PatientRegister {
         Response<PatientCreateResponse> response;
         try {
             RequestData requestData = new RequestData(patient);
+            Log.i("PatientRegister", "request: " + requestData.getRequestData().toString());
             response = service.createPatient(requestData).execute();
+            Log.i("PatientRegister", response.body().toString());
             if(response.body() != null && !response.body().isSuccess()){
                 throw new ExistingSusNumberException();
             }

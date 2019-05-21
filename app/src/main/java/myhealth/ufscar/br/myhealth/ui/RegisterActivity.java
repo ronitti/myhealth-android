@@ -125,10 +125,10 @@ public class RegisterActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 if(currentStep == SignUpStep.ACCESS_DATA){
-                    nextStep();
+
                     new UserRegisterTask(RegisterActivity .this).execute(SectionData.PATIENT.getEmail(), SectionData.PATIENT.getPassword());
                 }else if(currentStep == SignUpStep.ADDRESS){
-                    nextStep();
+
                     new PatientRegisterTask(RegisterActivity.this).execute(SectionData.PATIENT);
                 }else if(currentStep == SignUpStep.SETTINGS_SUCCESS) {
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -170,9 +170,6 @@ public class RegisterActivity extends AppCompatActivity implements
                 setStepView(currentStep.step);
             }
         });
-
-
-        setStepView(currentStep.step);
     }
 
     @Override
@@ -190,6 +187,7 @@ public class RegisterActivity extends AppCompatActivity implements
     @Override
     public void onTaskFinsh(boolean result) {
         if(result) {
+            nextStep();
             mPager.setCurrentItem(currentStep.step);
             lblStepTitle.setText(getString(currentStep.getStepTitle()));
         }
