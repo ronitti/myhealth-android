@@ -28,7 +28,8 @@
                     android:digits="0123456789 "
                     android:hint="@string/register_hint_sus_number"
                     android:textCursorDrawable="@null"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

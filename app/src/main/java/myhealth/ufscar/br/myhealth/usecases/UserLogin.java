@@ -10,6 +10,7 @@ import myhealth.ufscar.br.myhealth.repository.query.UserLoadResponse;
 
 public class UserLogin {
 
+
     public static User execute(String email, String password) throws IOException {
         UserLoadResponse response = UserRepository.login(new User(email, password));
 
@@ -21,4 +22,6 @@ public class UserLogin {
         }
         return response.getUserData();
     }
+
+
 }

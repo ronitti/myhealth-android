@@ -83,4 +83,18 @@ public class Patient extends User implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "susNumber='" + susNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender=" + gender +
+                ", placeOfBirth='" + placeOfBirth + '\'' +
+                ", mothersName='" + mothersName + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

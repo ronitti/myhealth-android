@@ -20,4 +20,11 @@ public class UserLoadRequest extends ResponseData{
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "UserLoadRequest{" +
+                "user=" + user +
+                '}';
+    }
 }

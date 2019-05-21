@@ -9,6 +9,30 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "myhealth.db";
     private static final int DATABASE_VERSION = 1;
 
+    public static final String TABLE_REGISTER = "Register";
+    public static final String TABLE_PATIENT = "Patient";
+
+
+    private static final String QUERY_CREATE_TABLE_REGISTER = "CREATE TABLE " + TABLE_REGISTER +
+            "( id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "dcnt_type INTEGER NOT NULL," +
+            "datetime TEXT NOT NULL," +
+            "observation TEXT," +
+            "systolic INTEGER," +
+            "diastolic INTEGER," +
+            "heart_beats INTEGER," +
+            "weight REAL," +
+            "glycemic_rate REAL," +
+            "bodyfat REAL);";
+
+    private static final String QUERY_CREATE_TABLE_PATIENT = "CREATE TABLE " + TABLE_PATIENT +
+            "( id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "email TEXT NOT NULL," +
+            "password TEXT NOT NULL," +
+            "susNumber TEXT NOT NULL,"+
+            "name TEXT NOT NULL" +
+            ")";
+
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -16,19 +40,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query_create_table = "CREATE TABLE Register" +
-                "( id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "dcnt_type INTEGER NOT NULL," +
-                "datetime TEXT NOT NULL," +
-                "observation TEXT," +
-                "systolic INTEGER," +
-                "diastolic INTEGER," +
-                "heart_beats INTEGER," +
-                "weight REAL," +
-                "glycemic_rate REAL," +
-                "bodyfat REAL);";
-
-        db.execSQL(query_create_table);
+        db.execSQL(QUERY_CREATE_TABLE_REGISTER);
+        db.execSQL(QUERY_CREATE_TABLE_PATIENT);
     }
 
     @Override

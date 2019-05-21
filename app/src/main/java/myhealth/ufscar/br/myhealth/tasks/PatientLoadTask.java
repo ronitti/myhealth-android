@@ -9,13 +9,16 @@ import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
+import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.usecases.PatientLoad;
 
 public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
     private final AlertDialog alertDialog;
+    private Context context;
 
     public PatientLoadTask(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        this.context = context;
         builder.setPositiveButton(context.getString(R.string.dialog_btn_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -36,7 +39,15 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
 
     @Override
     protected Patient doInBackground(User... user) {
-        return PatientLoad.load(user[0]);
+        Patient patient = null;
+        try {
+            patient = PatientLoad.load(user[0]);
+        } catch (NonRegisteredUserException e) {
+            alertDialog.setMessage("Sorry! Try again later.");
+            alertDialog.show();
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        }
+        return patient;
     }
 
     @Override

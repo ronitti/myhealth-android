@@ -59,6 +59,8 @@ public class PersonalDataFragment extends Fragment {
 
             }
         });
+
+        txtDateOfBirth.addTextChangedListener(MaskEditUtil.mask(txtDateOfBirth, MaskEditUtil.FORMAT_DATE));
         txtDateOfBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

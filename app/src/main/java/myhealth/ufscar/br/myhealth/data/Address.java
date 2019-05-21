@@ -75,4 +75,17 @@ public class Address implements Serializable {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "postcode='" + postcode + '\'' +
+                ", thoroughfare='" + thoroughfare + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", number=" + number +
+                ", complement='" + complement + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }
