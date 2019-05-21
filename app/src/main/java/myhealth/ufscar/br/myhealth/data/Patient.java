@@ -3,6 +3,7 @@ package myhealth.ufscar.br.myhealth.data;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Patient extends User implements Serializable {
     @SerializedName("sus_number")
@@ -10,7 +11,7 @@ public class Patient extends User implements Serializable {
     @SerializedName("name")
     private String name;
     @SerializedName("date_of_birth")
-    private String dateOfBirth;
+    private Date dateOfBirth;
     @SerializedName("gender")
     private Character gender;
     @SerializedName("place_of_birth")
@@ -43,11 +44,11 @@ public class Patient extends User implements Serializable {
         this.name = name;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

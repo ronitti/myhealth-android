@@ -10,8 +10,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import java.text.ParseException;
+
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
+import myhealth.ufscar.br.myhealth.utils.DateTime;
 
 public class PersonalDataFragment extends Fragment {
     private EditText txtName;
@@ -59,8 +62,15 @@ public class PersonalDataFragment extends Fragment {
         txtDateOfBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus)
-                    SectionData.PATIENT.setDateOfBirth(txtDateOfBirth.getText().toString());
+                if(!hasFocus) {
+                    try {
+                        SectionData.PATIENT.setDateOfBirth(DateTime.SIMPLE_DATE_FORMAT.parse(txtDateOfBirth.getText().toString()));
+                    } catch (ParseException e) {
+
+
+                        e.printStackTrace();
+                    }
+                }
 
             }
         });

@@ -21,13 +21,13 @@ public class PatientRegister {
             RequestData requestData = new RequestData(patient);
             response = service.createPatient(requestData).execute();
             if(response.body() != null && !response.body().isSuccess()){
+                Log.i("API", response.body().getMessage().toString());
+                Log.i("API","CODE: " + response.body().getCode());
                 throw new ExistingSusNumberException();
             }
             if(response.body() == null){
                 throw new NoConnectionException();
             }
-            Log.i("API", response.body().getMessage().toString());
-            Log.i("API","CODE: " + response.body().getCode());
             return true;
         } catch (IOException e) {
             e.printStackTrace();
