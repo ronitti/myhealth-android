@@ -66,13 +66,13 @@ public class ListRegisterFragment extends Fragment {
 
         */
         //registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
-        registerList = dao.listRegisters();
+        registerList = dao.listRegisters(SectionData.PATIENT.getId());
     }
 
 
     public void updateList() {
         registerList.clear();
-        registerList = dao.listRegisters();
+        registerList = dao.listRegisters(SectionData.PATIENT.getId());
         //registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
         adapter.setList(registerList);
         adapter.notifyDataSetChanged();

@@ -30,6 +30,7 @@ public class PatientDAO {
 
     public boolean save(Patient patient) {
         ContentValues values = new ContentValues();
+        values.put("id", patient.getId());
         values.put("email", patient.getEmail());
         values.put("password", patient.getPassword());
         values.put("name", patient.getName());
@@ -46,11 +47,50 @@ public class PatientDAO {
         if(cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             int id = cursor.getInt(cursor.getColumnIndex("id"));
+            user = new User();
             user.setId(id);
             user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
             user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
         }
         return user;
+    }
+
+    public boolean isStored(int id_patient) {
+        String query = "SELECT * FROM " + DbHelper.TABLE_PATIENT + " WHERE id= ?";
+        String args[] = {String.valueOf(id_patient)};
+        Cursor cursor = gw.getDb().rawQuery(query, args);
+        if(cursor != null && cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isStoredEmail(String email) {
+        String query = "SELECT * FROM " + DbHelper.TABLE_PATIENT + " WHERE email= ?";
+        String args[] = {email};
+        Cursor cursor = gw.getDb().rawQuery(query, args);
+        if(cursor != null && cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public Patient getPatientById(int id) {
+        Patient patient = null;
+        String query = "SELECT * FROM " + DbHelper.TABLE_PATIENT + " WHERE id= ?";
+        String args[] = {String.valueOf(id)};
+        Cursor cursor = gw.getDb().rawQuery(query, args);
+        if(cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            patient = new Patient();
+            patient.setId(id);
+            patient.setEmail( cursor.getString(cursor.getColumnIndex("email")));
+            patient.setName( cursor.getString(cursor.getColumnIndex("name")));
+            patient.setSusNumber(cursor.getString(cursor.getColumnIndex("susNumber")));
+            patient.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+        }
+        return patient;
     }
 
 

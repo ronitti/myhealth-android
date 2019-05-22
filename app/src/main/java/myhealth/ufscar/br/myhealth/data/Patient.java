@@ -88,7 +88,9 @@ public class Patient extends User implements Serializable {
     @Override
     public String toString() {
         return "Patient{" +
+                "id='" + getId() + '\'' +
                 "susNumber='" + susNumber + '\'' +
+                "email='"+ getEmail() + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender=" + gender +

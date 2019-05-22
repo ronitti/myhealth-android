@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -25,6 +27,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import java.util.List;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
@@ -37,10 +40,13 @@ public class MainActivity extends AppCompatActivity
 
     ListRegisterFragment fragment;
 
-    FloatingActionMenu fab_menu;
-    FloatingActionButton fabHypertension;
-    FloatingActionButton fabDiabetes;
-    FloatingActionButton fabObesity;
+    private FloatingActionMenu fab_menu;
+    private FloatingActionButton fabHypertension;
+    private FloatingActionButton fabDiabetes;
+    private FloatingActionButton fabObesity;
+
+    private TextView txtNameOfPatient;
+    private TextView txtEmailOfPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +130,12 @@ public class MainActivity extends AppCompatActivity
         this.fabDiabetes = findViewById(R.id.fab_item_diabetes);
         this.fabObesity = findViewById(R.id.fab_item_obesity);
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        this.txtNameOfPatient = headerView.findViewById(R.id.txt_name_patient);
+        this.txtEmailOfPatient = headerView.findViewById(R.id.txt_email_patient);
+
         fabHypertension.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +159,12 @@ public class MainActivity extends AppCompatActivity
                 launchCollect(NCD.OBESITY);
             }
         });
+
+        if(SectionData.PATIENT != null) {
+            Log.i("MainActivity", SectionData.PATIENT.toString());
+            this.txtNameOfPatient.setText(SectionData.PATIENT.getName());
+            this.txtEmailOfPatient.setText(SectionData.PATIENT.getEmail());
+        }
 
     }
 

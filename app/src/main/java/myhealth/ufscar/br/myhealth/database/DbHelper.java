@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "myhealth.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_REGISTER = "Register";
     public static final String TABLE_PATIENT = "Patient";
@@ -15,6 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String QUERY_CREATE_TABLE_REGISTER = "CREATE TABLE " + TABLE_REGISTER +
             "( id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "id_patient INTEGER NOT NULL," +
             "dcnt_type INTEGER NOT NULL," +
             "datetime TEXT NOT NULL," +
             "observation TEXT," +

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
+import myhealth.ufscar.br.myhealth.database.PatientDAO;
 import myhealth.ufscar.br.myhealth.exception.NoConnectionException;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.exception.WrongPasswordException;
@@ -21,11 +24,13 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
     private static final int CODE_NO_CONNECTION = 3;
 
     private int code = CODE_SUCCESS;
+    private Activity activity;
 
     private AlertDialog alertDialog;
 
 
     public UserLoginTask(Activity activity){
+        this.activity = activity;
         createDialog(activity);
     }
 
@@ -52,14 +57,27 @@ public class UserLoginTask extends AsyncTask<String, Integer, User> {
 
     @Override
     protected User doInBackground(String... data) {
-        try {
-            return UserLogin.execute(data[0], data[1]);
-        }catch (WrongPasswordException e){
-            code = CODE_WRONG_PASSWORD;
-        }catch (NoConnectionException e){
-            code = CODE_NON_REGISTERED_USER;
-        }catch (NonRegisteredUserException | IOException e) {
-            code = CODE_NO_CONNECTION;
+        PatientDAO dao = new PatientDAO(activity);
+
+        if (dao.isStoredEmail(data[0])) {
+            Log.i("UserLoginTask", "User with " + data[0] + " is stored");
+            User user = dao.isLocalUser(data[0], data[1]);
+            if ( user != null) {
+                return user;
+            } else {
+                code = CODE_WRONG_PASSWORD;
+            }
+        } else {
+
+            try {
+                return UserLogin.execute(data[0], data[1]);
+            } catch (WrongPasswordException e) {
+                code = CODE_WRONG_PASSWORD;
+            } catch (NoConnectionException e) {
+                code = CODE_NON_REGISTERED_USER;
+            } catch (NonRegisteredUserException | IOException e) {
+                code = CODE_NO_CONNECTION;
+            }
         }
         return null;
     }

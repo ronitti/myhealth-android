@@ -12,6 +12,7 @@ import android.widget.EditText;
 import java.util.Date;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Obesity;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
@@ -61,6 +62,7 @@ public class CollectObesityFragment extends CustomFragment {
     @Override
     public boolean save() {
         Obesity c = new Obesity();
+        c.setId_patient(SectionData.PATIENT.getId());
         c.setTimestamp(new Date());
         c.setNcd(NCD.OBESITY);
         c.setWeight(Float.parseFloat(txtWeight.getText().toString()));

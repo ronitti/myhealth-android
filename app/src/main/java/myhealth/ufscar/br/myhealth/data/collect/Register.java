@@ -7,6 +7,7 @@ import myhealth.ufscar.br.myhealth.data.NCD;
 
 public class Register implements Serializable {
     private Integer id;
+    private Integer id_patient;
     private NCD ncd;
 
     public NCD getNcd() {
@@ -42,5 +43,24 @@ public class Register implements Serializable {
 
     public void setObservation(String observation) {
         this.observation = observation;
+    }
+
+    public Integer getId_patient() {
+        return id_patient;
+    }
+
+    public void setId_patient(Integer id_patient) {
+        this.id_patient = id_patient;
+    }
+
+    @Override
+    public String toString() {
+        return "Register{" +
+                "id=" + id +
+                ", id_patient=" + id_patient +
+                ", ncd=" + ncd +
+                ", timestamp=" + timestamp +
+                ", observation='" + observation + '\'' +
+                '}';
     }
 }

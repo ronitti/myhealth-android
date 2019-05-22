@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
+import myhealth.ufscar.br.myhealth.database.PatientDAO;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.usecases.PatientLoad;
 
@@ -39,13 +41,29 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
 
     @Override
     protected Patient doInBackground(User... user) {
+        PatientDAO dao = new PatientDAO(context);
         Patient patient = null;
-        try {
-            patient = PatientLoad.load(user[0]);
-        } catch (NonRegisteredUserException e) {
-            alertDialog.setMessage("Sorry! Try again later.");
-            alertDialog.show();
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+
+
+        if (dao.isStored(user[0].getId())) {
+            patient = dao.getPatientById(user[0].getId());
+        } else {
+
+            try {
+                patient = PatientLoad.load(user[0]);
+                patient.setId(user[0].getId());
+                patient.setEmail(user[0].getEmail());
+                patient.setPassword(user[0].getPassword());
+
+
+                dao.save(patient);
+                Log.i("PatientLoadTask", "Patient was stored in local with id " + patient.getId());
+
+            } catch (NonRegisteredUserException e) {
+                alertDialog.setMessage("Sorry! Try again later.");
+                alertDialog.show();
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+            }
         }
         return patient;
     }

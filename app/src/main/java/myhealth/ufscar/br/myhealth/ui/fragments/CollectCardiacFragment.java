@@ -12,6 +12,7 @@ import android.widget.EditText;
 import java.util.Date;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
@@ -68,6 +69,7 @@ public class CollectCardiacFragment extends CustomFragment {
     @Override
     public boolean save() {
         Cardiac c = new Cardiac();
+        c.setId_patient(SectionData.PATIENT.getId());
         c.setTimestamp(new Date());
         c.setNcd(NCD.HYPERTENSION);
         c.setDiastolic(Integer.parseInt(txtDiastolic.getText().toString()));

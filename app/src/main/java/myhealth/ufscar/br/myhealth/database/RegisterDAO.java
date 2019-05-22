@@ -31,6 +31,7 @@ public class RegisterDAO {
 
         ContentValues values = new ContentValues();
 
+        values.put("id_patient", register.getId_patient().toString());
         values.put("datetime", register.getTimestamp().toString());
         values.put("observation", register.getObservation());
 
@@ -55,9 +56,11 @@ public class RegisterDAO {
     }
 
 
-    public List<Register> listRegisters() {
+    public List<Register> listRegisters( int patient) {
         List<Register> list = new ArrayList<>();
-        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM " + TABLE_REGISTER, null);
+        String query = "SELECT * FROM " + TABLE_REGISTER + " WHERE id_patient = ?";
+        String args[] = {String.valueOf(patient)};
+        Cursor cursor = gw.getDb().rawQuery( query, args);
         while (cursor.moveToNext()) {
             Register r = null;
 
@@ -92,6 +95,7 @@ public class RegisterDAO {
                 }
 
                 r.setObservation(cursor.getString(cursor.getColumnIndex("observation")));
+                r.setId_patient(cursor.getInt(cursor.getColumnIndex("id_patient")));
                 list.add(r);
             }
         }

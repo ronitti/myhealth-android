@@ -15,6 +15,7 @@ import java.text.ParseException;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.utils.DateTime;
+import myhealth.ufscar.br.myhealth.utils.MaskEditUtil;
 
 public class PersonalDataFragment extends Fragment {
     private EditText txtName;

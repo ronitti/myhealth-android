@@ -12,6 +12,7 @@ import android.widget.EditText;
 import java.util.Date;
 
 import myhealth.ufscar.br.myhealth.R;
+import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.collect.Glycemic;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
@@ -62,6 +63,7 @@ public class CollectGlycemicFragment extends CustomFragment {
     @Override
     public boolean save() {
         Glycemic c = new Glycemic();
+        c.setId_patient(SectionData.PATIENT.getId());
         c.setTimestamp(new Date());
         c.setNcd(NCD.DIABETES);
         c.setGlycemicRate(Integer.parseInt(txtGlycemic.getText().toString()));

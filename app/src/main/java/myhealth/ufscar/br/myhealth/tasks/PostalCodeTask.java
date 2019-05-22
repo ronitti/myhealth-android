@@ -102,14 +102,21 @@ public class PostalCodeTask extends AsyncTask<String, Integer, Address> {
         super.onPostExecute(address);
         if (address != null && address.getPostcode() != null) {
             Log.i("AddressLoad", address.toString());
-            SectionData.PATIENT.setAddress(address);
-            //txtPostcode.setText(address.getPostcode());
+
             txtThoroughfare.setText(address.getThoroughfare());
             txtNeighborhood.setText(address.getNeighborhood());
             txtCity.setText(address.getCity());
             txtComplement.setText(address.getComplement());
             txtState.setText(address.getState());
             alertDialog.dismiss();
+
+            SectionData.PATIENT.getAddress().setThoroughfare(address.getThoroughfare());
+            SectionData.PATIENT.getAddress().setNeighborhood(address.getNeighborhood());
+            SectionData.PATIENT.getAddress().setCity(address.getCity());
+            SectionData.PATIENT.getAddress().setComplement(address.getComplement());
+            SectionData.PATIENT.getAddress().setState(address.getState());
+
+
 
         } else {
             txtThoroughfare.setText("");
