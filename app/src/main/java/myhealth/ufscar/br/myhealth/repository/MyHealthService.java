@@ -1,6 +1,7 @@
 package myhealth.ufscar.br.myhealth.repository;
 
 
+import myhealth.ufscar.br.myhealth.repository.query.AccessCodeResponse;
 import myhealth.ufscar.br.myhealth.repository.query.FrequencyCreateResponse;
 import myhealth.ufscar.br.myhealth.repository.query.MonitoringCreateResponse;
 import myhealth.ufscar.br.myhealth.repository.query.PatientCreateResponse;
@@ -48,4 +49,7 @@ public interface MyHealthService {
 
     @POST("register/list")
     Call<RegisterListResponse> listRegister(@Body RequestData request);
+
+    @POST("patient/token/load")
+    Call<AccessCodeResponse> getAccessCode(@Body RequestData request);
 }

@@ -30,7 +30,7 @@ public class CNSValidator implements TextWatcher {
         String cns = s.toString();
         cns = cns.replace(" ", "");
         Log.i("CNSValidator", "Length CNS: " + cns.length() + " CNS: " + cns);
-        if(cns.length() >= 15 && !isValid(cns)) {
+        if(cns.length() > 15 && !isValid(cns)) {
             editText.setError("SUS number is invalid");
 
         } else {

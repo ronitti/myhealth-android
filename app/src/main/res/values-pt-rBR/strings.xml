@@ -93,6 +93,14 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Início</string>
     <string name="list_register_title">Histórico de coleta</string>
+    <string name="menu_access_code">Código de Acesso</string>
+    <string name="menu_profile">Perfil</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="fab_item_diabetes">Diabetes</string>
+    <string name="fab_item_hypertension">Hipertensão</string>
+    <string name="fab_item_obesity">Obesidade</string>
+    <string name="access_code_description">Forneça esse código para o seu profissional de saúde.</string>
+    <string name="access_code_title">Código de Acesso</string>
 </resources>

@@ -69,8 +69,6 @@ public class PersonalDataFragment extends Fragment {
                     try {
                         SectionData.PATIENT.setDateOfBirth(DateTime.SIMPLE_DATE_FORMAT.parse(txtDateOfBirth.getText().toString()));
                     } catch (ParseException e) {
-
-
                         e.printStackTrace();
                     }
                 }

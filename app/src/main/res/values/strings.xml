@@ -113,4 +113,7 @@
     <string name="list_register_title">History of Data Collection</string>
     <string name="dialog_error_no_connection">Unable to connect to server</string>
     <string name="hint_error_invalid_password">The password is invalid</string>
+    <string name="menu_access_code">Access Code</string>
+    <string name="access_code_title">Access Code</string>
+    <string name="access_code_description">Please provide this code to your healthcare provider.</string>
 </resources>

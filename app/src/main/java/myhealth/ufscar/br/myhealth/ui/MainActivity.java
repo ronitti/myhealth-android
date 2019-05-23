@@ -33,12 +33,13 @@ import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.ui.adapters.RegisterAdapter;
+import myhealth.ufscar.br.myhealth.ui.fragments.AccessCodeFragment;
 import myhealth.ufscar.br.myhealth.ui.fragments.ListRegisterFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ListRegisterFragment fragment;
+    Fragment fragment;
 
     private FloatingActionMenu fab_menu;
     private FloatingActionButton fabHypertension;
@@ -107,13 +108,24 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_settings) {
 
+        } else if (id == R.id.nav_home && !(fragment instanceof ListRegisterFragment)) {
+            fragment = new ListRegisterFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content, fragment);
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_access_code && !(fragment instanceof AccessCodeFragment)) {
+            fragment = new AccessCodeFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_content, fragment);
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -177,8 +189,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
-        fragment.updateList();
         super.onResume();
-
+        if(fragment instanceof ListRegisterFragment)
+            ((ListRegisterFragment) fragment).updateList();
     }
 }

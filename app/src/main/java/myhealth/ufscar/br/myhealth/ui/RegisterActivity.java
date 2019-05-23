@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements
     };
 
     private SignUpStep nextStep(){
-        while(currentStepIndex <= registerSteps.size() && !activatedSteps[++currentStepIndex]);
+        while(currentStepIndex < registerSteps.size() && !activatedSteps[++currentStepIndex]);
         currentStep = registerSteps.get(currentStepIndex);
         return currentStep;
     }

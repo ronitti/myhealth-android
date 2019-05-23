@@ -63,7 +63,6 @@
         fab:menu_labels_ellipsize="none"
         fab:menu_labels_maxLines="-1"
         >
-        <!--android:src="@drawable/ic_heartbeat" -->
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_item_hypertension"
             android:layout_width="wrap_content"
@@ -74,7 +73,6 @@
             fab:fab_size="mini"
             fab:fab_label="@string/fab_item_hypertension" />
 
-        <!--android:src="@drawable/ic_glycemic"-->
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_item_diabetes"
             android:layout_width="wrap_content"
@@ -85,7 +83,6 @@
             fab:fab_size="mini"
             fab:fab_label="@string/fab_item_diabetes" />
 
-        <!--android:src="@drawable/ic_weight_scale"-->
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_item_obesity"
             android:layout_width="wrap_content"
