@@ -1,5 +1,6 @@
 package myhealth.ufscar.br.myhealth.data.collect.frequency;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Frequency {
@@ -79,5 +80,18 @@ public class Frequency {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Frequency{" +
+                "frequencyType=" + frequencyType +
+                ", daysOfWeek=" + Arrays.toString(daysOfWeek) +
+                ", customEvery=" + customEvery +
+                ", timesADay=" + timesADay +
+                ", startDate=" + startDate +
+                ", hoursOfDay=" + Arrays.toString(hoursOfDay) +
+                '}';
     }
 }

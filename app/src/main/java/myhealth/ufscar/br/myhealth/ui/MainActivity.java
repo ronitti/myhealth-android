@@ -29,9 +29,14 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
+import myhealth.ufscar.br.myhealth.database.DCNTFrequencyDAO;
 import myhealth.ufscar.br.myhealth.receiver.RegisterBroadcastReceiver;
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.service.RegisterIntentService;

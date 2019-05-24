@@ -7,11 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "myhealth.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public static final String TABLE_REGISTER = "Register";
     public static final String TABLE_PATIENT = "Patient";
     public static final String TABLE_DCNT_PATIENT = "DCNT_Patient";
+    public static final String TABLE_FREQUENCY = "frequency";
 
 
     private static final String QUERY_CREATE_TABLE_REGISTER = "CREATE TABLE " + TABLE_REGISTER +
@@ -42,6 +43,17 @@ public class DbHelper extends SQLiteOpenHelper {
             "type_dcnt INTEGER NOT NULL" +
             ")";
 
+    private static final String QUERY_CREATE_TABLE_FREQUENCY = "CREATE TABLE " + TABLE_FREQUENCY + "(" +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "id_dcnt INTEGER NOT NULL," +
+            "frequency_type INTEGER NOT NULL," +
+            "days_week TEXT NOT NULL," +
+            "custon_every INTEGER NOT NULL," +
+            "times_day INTEGER NOT NULL," +
+            "start_date TEXT NOT NULL," +
+            "hours_of_date TEXT NOT NULL" +
+            ")";
+
 
 
 
@@ -53,7 +65,8 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(QUERY_CREATE_TABLE_REGISTER);
         db.execSQL(QUERY_CREATE_TABLE_PATIENT);
-        //db.execSQL(QUERY_CREATE_TABLE_DCNT_PATIENT);
+        db.execSQL(QUERY_CREATE_TABLE_DCNT_PATIENT);
+        db.execSQL(QUERY_CREATE_TABLE_FREQUENCY);
     }
 
     @Override
