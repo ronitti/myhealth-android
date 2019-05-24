@@ -17,6 +17,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "( id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "id_patient INTEGER NOT NULL," +
             "dcnt_type INTEGER NOT NULL," +
+            "sync INTEGER NOT NULL," +
             "datetime TEXT NOT NULL," +
             "observation TEXT," +
             "systolic INTEGER," +

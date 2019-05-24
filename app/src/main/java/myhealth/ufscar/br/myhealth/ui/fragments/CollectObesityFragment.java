@@ -69,8 +69,7 @@ public class CollectObesityFragment extends CustomFragment {
         c.setBodyfat(Float.parseFloat(txtBodyFat.getText().toString()));
         c.setObservation(txtObservation.getText().toString());
 
-        //new CollectDataTask(getActivity()).execute(new Pair<Patient, Register>(SectionData.PATIENT, c));
-        //SectionData.PATIENT_REGISTERS.add(c);
+        SectionData.PATIENT_REGISTERS.add(c);
 
         return dao.save(c);
     }

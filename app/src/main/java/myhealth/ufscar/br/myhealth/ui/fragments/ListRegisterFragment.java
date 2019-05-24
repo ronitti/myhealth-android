@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class ListRegisterFragment extends Fragment {
 
     private RecyclerView recyclerView;
     RegisterAdapter adapter;
-    private List<Register> registerList;
+    private List<Pair<Integer, Register>> registerList;
     private RegisterDAO dao;
 
     @Nullable
@@ -56,16 +57,18 @@ public class ListRegisterFragment extends Fragment {
         if (dao == null) {
             dao = new RegisterDAO(getActivity());
         }
-        /*
+
         //Getting from server
+        /*
         if (SectionData.PATIENT_REGISTERS != null){
             for(Register register: SectionData.PATIENT_REGISTERS)
                 dao.save(register);
         }
-        SectionData.PATIENT_REGISTERS = new ArrayList<>(dao.listRegisters());
+        SectionData.PATIENT_REGISTERS = new ArrayList<>(dao.listRegisters(SectionData.PATIENT.getId()));
 
+
+        registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
         */
-        //registerList = new ArrayList<>(SectionData.PATIENT_REGISTERS);
         registerList = dao.listRegisters(SectionData.PATIENT.getId());
     }
 

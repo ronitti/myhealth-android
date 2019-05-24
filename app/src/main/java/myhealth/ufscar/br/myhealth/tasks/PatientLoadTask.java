@@ -3,6 +3,7 @@ package myhealth.ufscar.br.myhealth.tasks;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -12,6 +13,7 @@ import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.database.PatientDAO;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
+import myhealth.ufscar.br.myhealth.ui.MainActivity;
 import myhealth.ufscar.br.myhealth.usecases.PatientLoad;
 
 public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
@@ -46,6 +48,7 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
 
 
         if (dao.isStored(user[0].getId())) {
+            Log.i(getClass().getSimpleName(), "doInBackground - Patient is stored" + user[0].getId());
             patient = dao.getPatientById(user[0].getId());
         } else {
 
@@ -73,7 +76,9 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
         super.onPostExecute(patient);
         if(patient != null){
             SectionData.PATIENT = patient;
-            new CollectedDataLoadTask(alertDialog.getContext()).execute(SectionData.PATIENT);
+            Intent intent = new Intent(alertDialog.getContext(), MainActivity.class);
+            alertDialog.getContext().startActivity(intent);
+            alertDialog.dismiss();
         }
     }
 }

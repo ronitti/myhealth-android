@@ -1,13 +1,16 @@
 package myhealth.ufscar.br.myhealth.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -20,19 +23,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
-import java.util.List;
+import java.util.Calendar;
 
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
+import myhealth.ufscar.br.myhealth.receiver.RegisterBroadcastReceiver;
 import myhealth.ufscar.br.myhealth.data.NCD;
-import myhealth.ufscar.br.myhealth.data.collect.Cardiac;
-import myhealth.ufscar.br.myhealth.data.collect.Register;
-import myhealth.ufscar.br.myhealth.database.RegisterDAO;
-import myhealth.ufscar.br.myhealth.ui.adapters.RegisterAdapter;
+import myhealth.ufscar.br.myhealth.service.RegisterIntentService;
 import myhealth.ufscar.br.myhealth.ui.fragments.AccessCodeFragment;
 import myhealth.ufscar.br.myhealth.ui.fragments.ListRegisterFragment;
 
@@ -126,6 +128,13 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frame_content, fragment);
             fragmentTransaction.commit();
+        } else if (id == R.id.nav_exit) {
+            SectionData.PATIENT = null;
+            SectionData.PATIENT_REGISTERS = null;
+            SectionData.PATIENT_MONITORING = null;
+            Intent intent = new Intent( this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -142,11 +151,14 @@ public class MainActivity extends AppCompatActivity
         this.fabDiabetes = findViewById(R.id.fab_item_diabetes);
         this.fabObesity = findViewById(R.id.fab_item_obesity);
 
+
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         this.txtNameOfPatient = headerView.findViewById(R.id.txt_name_patient);
         this.txtEmailOfPatient = headerView.findViewById(R.id.txt_email_patient);
+
 
         fabHypertension.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,6 +190,9 @@ public class MainActivity extends AppCompatActivity
             this.txtEmailOfPatient.setText(SectionData.PATIENT.getEmail());
         }
 
+        stopAlarm();
+        startAlarm();
+
     }
 
 
@@ -187,10 +202,68 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int resultCode = intent.getIntExtra("resultCode", RESULT_CANCELED);
+            if (resultCode == RESULT_OK) {
+                if(fragment instanceof ListRegisterFragment)
+                    ((ListRegisterFragment) fragment).updateList();
+                Toast.makeText(MainActivity.this, getResources().getText(R.string.msg_synchronized), Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+
     @Override
     protected void onResume() {
         super.onResume();
+        IntentFilter filter = new IntentFilter(RegisterIntentService.ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter);
+
         if(fragment instanceof ListRegisterFragment)
             ((ListRegisterFragment) fragment).updateList();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+    public void startAlarm() {
+
+        Intent intent = new Intent(this, RegisterBroadcastReceiver.class);
+
+        boolean activeAlarme = (PendingIntent.getBroadcast(this, 0, intent,PendingIntent.FLAG_NO_CREATE ) == null);
+
+        if (!activeAlarme) {
+            Log.i("MaingActivity", "New Alarm");
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+
+
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 15 * 1000, pendingIntent);
+        } else {
+            Log.i("MaingActivity", "Alarm is active");
+        }
+    }
+
+    public void stopAlarm() {
+        Intent intent = new Intent(this, RegisterBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        Log.i("MainActivity", "Alarm is cancelled");
+    }
+
 }

@@ -18,29 +18,46 @@
         <TextView
             android:id="@+id/txt_view_title"
             tools:text="Line 1"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
             />
 
-        <TextView
-            android:id="@+id/txt_view_date"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="30/04/2019"
-            android:textSize="18sp"
-            android:paddingStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_view_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="30/04/2019"
+                android:textSize="15sp"
+                android:paddingStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/txt_view_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="12:00"
+                android:textSize="15sp"
+                android:paddingStart="10dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_sync"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             />
 
-        <TextView
-            android:id="@+id/txt_view_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="12:00"
-            android:textSize="18sp"
-            android:paddingStart="10dp"/>
+
 
     </LinearLayout>
 

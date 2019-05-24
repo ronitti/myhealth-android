@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="myhealth.ufscar.br.myhealth">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -34,6 +35,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".receiver.RegisterBroadcastReceiver"
+            android:process=":remote"
+            >
+
+        </receiver>
+
+        <service
+            android:name=".service.RegisterIntentService"
+            android:exported="false"
+            >
+
+        </service>
+
     </application>
 
 </manifest>

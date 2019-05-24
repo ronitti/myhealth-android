@@ -1,12 +1,19 @@
 package myhealth.ufscar.br.myhealth.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -20,12 +27,14 @@ import myhealth.ufscar.br.myhealth.data.collect.Register;
 
 public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHolderRegister> {
 
-    private List<Register> list;
+    private List<Pair<Integer, Register>> list;
     private LayoutInflater layoutInflater;
+    private Context context;
 
 
-    public RegisterAdapter(Context context, List<Register> list) {
+    public RegisterAdapter(Context context, List<Pair<Integer, Register>> list) {
         this.list = list;
+        this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -42,7 +51,8 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RegisterAdapter.ViewHolderRegister viewHolder, int i) {
         Log.i("LOG", "onBindViewHolder");
-        Register register = list.get(i);
+        Register register = list.get(i).second;
+        int status = list.get(i).first;
 
         if (register != null) {
             String txt_title = "";
@@ -69,6 +79,14 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
                 viewHolder.txt_view_date.setText(dateFormat.format(register.getTimestamp()));
                 viewHolder.txt_view_time.setText(timeFormat.format(register.getTimestamp()));
             }
+            Log.i("RegisterAdapter", "Register Status " + status);
+            if (status == 1) {
+
+                viewHolder.img_sync.setBackgroundResource(R.drawable.ic_check_circle);
+            } else {
+                viewHolder.img_sync.setBackgroundResource(R.drawable.ic_sync);
+            }
+            viewHolder.img_sync.getBackground().setColorFilter(new PorterDuffColorFilter(context.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN));
         }
 
 
@@ -85,6 +103,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         public TextView txt_view_title;
         public TextView txt_view_date;
         public TextView txt_view_time;
+        public ImageView img_sync;
 
         public ViewHolderRegister(View itemView) {
             super(itemView);
@@ -92,12 +111,13 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
             txt_view_title = (TextView) itemView.findViewById(R.id.txt_view_title);
             txt_view_date = (TextView) itemView.findViewById(R.id.txt_view_date);
             txt_view_time = (TextView) itemView.findViewById(R.id.txt_view_time);
+            img_sync = (ImageView) itemView.findViewById(R.id.img_sync);
 
 
         }
     }
 
-    public void setList(List<Register> list) {
+    public void setList(List<Pair<Integer, Register>> list) {
         this.list = list;
     }
 }

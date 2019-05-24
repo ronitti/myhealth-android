@@ -108,6 +108,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_exit">Exit</string>
 
 
     <string name="list_register_title">History of Data Collection</string>
@@ -116,4 +117,5 @@
     <string name="menu_access_code">Access Code</string>
     <string name="access_code_title">Access Code</string>
     <string name="access_code_description">Please provide this code to your healthcare provider.</string>
+    <string name="msg_synchronized">Data collected successfully synchronized</string>
 </resources>

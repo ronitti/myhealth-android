@@ -98,9 +98,11 @@
     <string name="menu_access_code">Código de Acesso</string>
     <string name="menu_profile">Perfil</string>
     <string name="menu_settings">Configurações</string>
+    <string name="menu_exit">Sair</string>
     <string name="fab_item_diabetes">Diabetes</string>
     <string name="fab_item_hypertension">Hipertensão</string>
     <string name="fab_item_obesity">Obesidade</string>
     <string name="access_code_description">Forneça esse código para o seu profissional de saúde.</string>
     <string name="access_code_title">Código de Acesso</string>
+    <string name="msg_synchronized">Dados coletados foram sincronizados com sucesso</string>
 </resources>
