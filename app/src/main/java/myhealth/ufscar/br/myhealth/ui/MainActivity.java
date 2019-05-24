@@ -252,7 +252,8 @@ public class MainActivity extends AppCompatActivity
 
 
             AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 15 * 1000, pendingIntent);
+            int interval = 60 * 1000;
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), interval, pendingIntent);
         } else {
             Log.i("MaingActivity", "Alarm is active");
         }

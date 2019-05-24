@@ -11,6 +11,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_REGISTER = "Register";
     public static final String TABLE_PATIENT = "Patient";
+    public static final String TABLE_DCNT_PATIENT = "DCNT_Patient";
 
 
     private static final String QUERY_CREATE_TABLE_REGISTER = "CREATE TABLE " + TABLE_REGISTER +
@@ -35,6 +36,14 @@ public class DbHelper extends SQLiteOpenHelper {
             "name TEXT NOT NULL" +
             ")";
 
+    private static final String QUERY_CREATE_TABLE_DCNT_PATIENT = "CREATE TABLE " + TABLE_DCNT_PATIENT + " (" +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "id_patient INTEGER NOT NULL," +
+            "type_dcnt INTEGER NOT NULL" +
+            ")";
+
+
+
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,6 +53,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(QUERY_CREATE_TABLE_REGISTER);
         db.execSQL(QUERY_CREATE_TABLE_PATIENT);
+        //db.execSQL(QUERY_CREATE_TABLE_DCNT_PATIENT);
     }
 
     @Override

@@ -78,7 +78,6 @@ public class CollectCardiacFragment extends CustomFragment {
         c.setHeartBeats(Integer.parseInt(txtHeartBeats.getText().toString()));
         c.setObservation(txtObservation.getText().toString());
 
-        SectionData.PATIENT_REGISTERS.add(c);
         return dao.save(c);
     }
 }

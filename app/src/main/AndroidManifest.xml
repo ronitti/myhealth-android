@@ -38,7 +38,8 @@
 
         <receiver
             android:name=".receiver.RegisterBroadcastReceiver"
-            android:process=":remote"
+            android:enabled="true"
+            android:exported="true"
             >
 
         </receiver>
