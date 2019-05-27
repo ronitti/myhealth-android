@@ -120,6 +120,7 @@ public class RegisterActivity extends AppCompatActivity implements
         frequency = new Frequency();
         mPager.setAdapter(pagerAdapter);
         lblStepTitle.setText(getString(SignUpStep.values()[0].getStepTitle()));
+        setBtnNext(false);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,6 +209,15 @@ public class RegisterActivity extends AppCompatActivity implements
         step_view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_selected));
         step_view.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
 
+    }
+
+    public void setBtnNext (boolean status){
+        this.btnNext.setEnabled(status);
+        if(!status) {
+            btnNext.setTextColor(getResources().getColor(R.color.gray));
+        } else {
+            btnNext.setTextColor(getResources().getColor(R.color.colorPrimary));
+        }
     }
 
 

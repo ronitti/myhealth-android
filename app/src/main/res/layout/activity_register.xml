@@ -100,7 +100,7 @@
 
             <Button
                 android:id="@+id/action_back"
-                style="@style/AppTheme.RoundedCornerMaterialButtonGrayBorder"
+                style="@style/AppTheme.RoundedCornerMaterialButtonBorder"
                 android:layout_width="@dimen/width_btn_md"
                 android:layout_height="@dimen/height_btn_sm"
                 android:layout_marginEnd="@dimen/gap_between_fields"
@@ -109,7 +109,7 @@
 
             <Button
                 android:id="@+id/action_next"
-                style="@style/AppTheme.RoundedCornerMaterialButtonGrayBorder"
+                style="@style/AppTheme.RoundedCornerMaterialButtonBorder"
                 android:layout_width="@dimen/width_btn_md"
                 android:layout_height="@dimen/height_btn_sm"
                 android:layout_gravity="center"

@@ -5,6 +5,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
+import myhealth.ufscar.br.myhealth.R;
+
 public class CNSValidator implements TextWatcher {
 
     private EditText editText;
@@ -31,7 +33,7 @@ public class CNSValidator implements TextWatcher {
         cns = cns.replace(" ", "");
         Log.i("CNSValidator", "Length CNS: " + cns.length() + " CNS: " + cns);
         if(cns.length() > 15 && !isValid(cns)) {
-            editText.setError("SUS number is invalid");
+            editText.setError(editText.getContext().getResources().getText(R.string.hint_error_invalid_cns));
 
         } else {
             editText.setError(null);
@@ -40,6 +42,9 @@ public class CNSValidator implements TextWatcher {
 
 
     }
+
+
+
 
     private boolean isValid(String s) {
         if (s.matches("[1-2]\\d{10}00[0-1]\\d") || s.matches("[7-9]\\d{14}")) {

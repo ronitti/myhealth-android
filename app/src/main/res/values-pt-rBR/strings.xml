@@ -105,4 +105,7 @@
     <string name="access_code_description">Forneça esse código para o seu profissional de saúde.</string>
     <string name="access_code_title">Código de Acesso</string>
     <string name="msg_synchronized">Dados coletados foram sincronizados com sucesso</string>
+
+    <string name="hint_error_invalid_password_confirmation">As senhas não conferem</string>
+    <string name="hint_error_invalid_cns">O número SUS é inválido</string>
 </resources>
