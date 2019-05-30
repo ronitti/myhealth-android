@@ -25,6 +25,13 @@ public class RegisterIntentService extends IntentService {
         super("RegisterIntentService");
     }
 
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        startForeground(3,new Notification());
+    }
+
     @Override
     protected void onHandleIntent(Intent intent) {
 

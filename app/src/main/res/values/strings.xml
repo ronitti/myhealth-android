@@ -119,6 +119,7 @@
     <string name="access_code_title">Access Code</string>
     <string name="access_code_description">Please provide this code to your healthcare provider.</string>
     <string name="msg_synchronized">Data collected successfully synchronized</string>
+    <string name="msg_register_sucessfull">Register sucessfull</string>
 
     <string name="hint_error_invalid_password_confirmation">Your password and confirmation password do not match.</string>
     <string name="hint_error_invalid_cns">SUS number is invalid</string>

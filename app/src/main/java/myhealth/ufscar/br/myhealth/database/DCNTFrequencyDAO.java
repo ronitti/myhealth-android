@@ -3,8 +3,9 @@ package myhealth.ufscar.br.myhealth.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.support.v4.util.Pair;
 import android.util.Log;
-import android.util.Pair;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import java.util.regex.Pattern;
 
 import myhealth.ufscar.br.myhealth.data.NCD;
 import myhealth.ufscar.br.myhealth.data.Patient;
+import myhealth.ufscar.br.myhealth.data.PatientMonitoring;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
 
@@ -25,6 +27,53 @@ public class DCNTFrequencyDAO {
     public DCNTFrequencyDAO(Context context) {
         this.gw = DBGateway.getInstance(context);
     }
+
+
+    public boolean savePatientMonitoring(PatientMonitoring monitoring) {
+        Log.i("DCNTFrequencyDAO", "savePatientMonitoring - " + monitoring.toString());
+        boolean f_saved = false;
+        for (int i = 0; i < monitoring.getNcds().length; i++) {
+            if (monitoring.getNcds()[i] == true){
+                NCD type = monitoring.getNcdFrequency().get(i).first;
+                Frequency frequency = monitoring.getNcdFrequency().get(i).second;
+                Log.i("DCNTFrequencyDAO", "Monitoring type - " + type.getType());
+                int id_type = (int) saveDCNT(monitoring.getPatient().getId(), type);
+                if (id_type > 0) {
+                    int id_frequency = (int) saveFrequency(id_type, frequency);
+                    f_saved = true;
+                }
+            }
+        }
+        return f_saved;
+    }
+
+    public PatientMonitoring getPatientMonitoring(Patient patient) {
+        PatientMonitoring pm = null;
+        Log.i("DCNTFrequencyDAO", "getPatientMonitoring - Patient:" + patient.getId());
+        List<Pair<Integer, NCD>> ncds = getIdDCNTofPatient(patient.getId());
+        if (ncds != null && ncds.size() > 0) {
+            pm = new PatientMonitoring();
+            pm.setPatient(patient);
+            pm.setNcds(new boolean[] {false, false, false, false});
+            for (Pair<Integer, NCD> incd: ncds) {
+                Log.i("DCNTFrequencyDAO", "getPatientMonitoring - loading dcnt " + incd.second.getId());
+                pm.getNcds()[incd.second.getId()] = true;
+                List<Frequency> frequencies = listOfFrequencies(incd.first);
+                if (frequencies != null && frequencies.size() > 0) {
+                    Frequency frequency = frequencies.get(0);
+                    pm.getNcdFrequency().set(incd.second.getId(), new Pair<NCD, Frequency>(incd.second, frequency));
+                }
+            }
+            Log.i("DCNTFrequencyDAO", "getPatientMonitoring - loaded " + pm.toString());
+        } else {
+            Log.i("DCNTFrequencyDAO", "getPatientMonitoring - Not finded");
+        }
+
+        return pm;
+    }
+
+
+
 
     public long saveDCNT(int id_patient, NCD ncd) {
         ContentValues values = new ContentValues();
@@ -156,6 +205,10 @@ public class DCNTFrequencyDAO {
 
         }
         return hoursOfDay;
+    }
+
+    public void close() {
+        gw.getDb().close();
     }
 
 

@@ -39,6 +39,7 @@
             android:name=".receiver.RegisterBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
+            android:process=":remote_myhealth"
             >
 
         </receiver>
@@ -46,6 +47,17 @@
         <service
             android:name=".service.RegisterIntentService"
             android:exported="false"
+            android:enabled="true"
+            android:process=":remote_myhealth"
+            >
+
+        </service>
+
+        <service
+            android:name=".service.PatientMonitoringIntentService"
+            android:exported="false"
+            android:enabled="true"
+            android:process=":remote_myhealth"
             >
 
         </service>

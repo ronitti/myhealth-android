@@ -15,6 +15,7 @@ import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.PatientMonitoring;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
+import myhealth.ufscar.br.myhealth.database.DCNTFrequencyDAO;
 import myhealth.ufscar.br.myhealth.database.PatientDAO;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
@@ -50,6 +51,7 @@ public class PatientMonitoringLoadTask extends AsyncTask<Patient, Integer, Patie
 
     @Override
     protected PatientMonitoring doInBackground(Patient... patient) {
+
         PatientMonitoring pm  = GetMonitoringData.execute(patient[0]);
 
         //TODO implementação em base de dados local

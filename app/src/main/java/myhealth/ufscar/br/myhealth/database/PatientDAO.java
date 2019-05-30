@@ -93,5 +93,28 @@ public class PatientDAO {
         return patient;
     }
 
+    public List<Patient> patientList() {
+        List<Patient> patients = new ArrayList<>();
+        String query = "SELECT * FROM " + DbHelper.TABLE_PATIENT;
+        Cursor cursor = gw.getDb().rawQuery(query, null);
+        if(cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Patient patient = new Patient();
+                patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                patient.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                patient.setName(cursor.getString(cursor.getColumnIndex("name")));
+                patient.setSusNumber(cursor.getString(cursor.getColumnIndex("susNumber")));
+                patient.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                patients.add(patient);
+            }
+        }
+        return patients;
+    }
+
+
+    public void close() {
+        gw.getDb().close();
+    }
+
 
 }

@@ -60,6 +60,6 @@ public class LoginActivity extends AppCompatActivity {
     private void signUp(){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 }

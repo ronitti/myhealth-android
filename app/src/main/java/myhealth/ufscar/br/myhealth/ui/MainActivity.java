@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -156,6 +157,19 @@ public class MainActivity extends AppCompatActivity
         this.fabDiabetes = findViewById(R.id.fab_item_diabetes);
         this.fabObesity = findViewById(R.id.fab_item_obesity);
 
+        if(SectionData.PATIENT_MONITORING.getNcds()[NCD.OBESITY.getId()] == false) {
+            Log.i("MainActivity", "Item menu obesity hided");
+            fabObesity.setVisibility(View.GONE);
+        }
+        if(SectionData.PATIENT_MONITORING.getNcds()[NCD.DIABETES.getId()] == false) {
+            Log.i("MainActivity", "Item menu obesity hided");
+            fabDiabetes.setVisibility(View.GONE);
+        }
+        if(SectionData.PATIENT_MONITORING.getNcds()[NCD.HYPERTENSION.getId()] == false) {
+            Log.i("MainActivity", "Item menu obesity hided");
+            fabHypertension.setVisibility(View.GONE);
+        }
+
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -225,7 +239,8 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         IntentFilter filter = new IntentFilter(RegisterIntentService.ACTION);
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter);
+        //LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter);
+        registerReceiver(receiver, filter);
 
         if(fragment instanceof ListRegisterFragment)
             ((ListRegisterFragment) fragment).updateList();
@@ -234,7 +249,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+        unregisterReceiver(receiver);
     }
 
     @Override
@@ -271,5 +286,6 @@ public class MainActivity extends AppCompatActivity
         alarmManager.cancel(pendingIntent);
         Log.i("MainActivity", "Alarm is cancelled");
     }
+
 
 }

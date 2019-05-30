@@ -194,6 +194,10 @@ public class RegisterDAO {
         return (result > 0);
     }
 
+    public void close() {
+        gw.getDb().close();
+    }
+
 
 
 }

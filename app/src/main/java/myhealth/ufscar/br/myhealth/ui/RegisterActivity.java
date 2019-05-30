@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -132,8 +133,10 @@ public class RegisterActivity extends AppCompatActivity implements
 
                     new PatientRegisterTask(RegisterActivity.this).execute(SectionData.PATIENT);
                 }else if(currentStep == SignUpStep.SETTINGS_SUCCESS) {
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    //Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    //startActivity(intent);
+                    Toast.makeText(getBaseContext(), getResources().getText(R.string.msg_register_sucessfull), Toast.LENGTH_SHORT).show();
+                    finish();
                 }else {
                     if (currentStep == SignUpStep.MONITORING_OBESITY_SETTINGS) {
                         SectionData.PATIENT_MONITORING.getNcdFrequency().set(NCD.OBESITY.getId(),new Pair<>(NCD.OBESITY, frequency));

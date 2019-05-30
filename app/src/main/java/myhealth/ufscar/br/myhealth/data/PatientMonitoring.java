@@ -4,6 +4,7 @@ import android.support.v4.util.Pair;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import myhealth.ufscar.br.myhealth.data.collect.frequency.DayOfWeek;
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
@@ -45,5 +46,14 @@ public class PatientMonitoring implements Serializable {
 
     public void setNcdFrequency(ArrayList<Pair<NCD, Frequency>> ncdFrequency) {
         this.ncdFrequency = ncdFrequency;
+    }
+
+    @Override
+    public String toString() {
+        return "PatientMonitoring{" +
+                "patient=" + patient +
+                ", ncds=" + Arrays.toString(ncds) +
+                ", ncdFrequency=" + ncdFrequency +
+                '}';
     }
 }

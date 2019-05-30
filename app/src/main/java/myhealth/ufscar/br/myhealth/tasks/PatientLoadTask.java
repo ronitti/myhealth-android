@@ -12,13 +12,16 @@ import java.util.List;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Patient;
+import myhealth.ufscar.br.myhealth.data.PatientMonitoring;
 import myhealth.ufscar.br.myhealth.data.User;
 import myhealth.ufscar.br.myhealth.data.collect.Register;
+import myhealth.ufscar.br.myhealth.database.DCNTFrequencyDAO;
 import myhealth.ufscar.br.myhealth.database.PatientDAO;
 import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.ui.MainActivity;
 import myhealth.ufscar.br.myhealth.usecases.CollectedDataLoad;
+import myhealth.ufscar.br.myhealth.usecases.GetMonitoringData;
 import myhealth.ufscar.br.myhealth.usecases.PatientLoad;
 
 public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
@@ -49,12 +52,15 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
     @Override
     protected Patient doInBackground(User... user) {
         PatientDAO dao = new PatientDAO(context);
+        DCNTFrequencyDAO frequencyDAO = new DCNTFrequencyDAO(context);
         Patient patient = null;
 
 
         if (dao.isStored(user[0].getId())) {
             Log.i(getClass().getSimpleName(), "doInBackground - Patient is stored" + user[0].getId());
             patient = dao.getPatientById(user[0].getId());
+            PatientMonitoring pm = frequencyDAO.getPatientMonitoring(patient);
+            SectionData.PATIENT_MONITORING = pm;
         } else {
 
             try {
@@ -78,6 +84,12 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
                 Log.i("PatientLoadTask", "Registers saved");
 
 
+                PatientMonitoring monitoring = GetMonitoringData.execute(patient);
+                SectionData.PATIENT_MONITORING = monitoring;
+                if (monitoring != null) {
+                    frequencyDAO.savePatientMonitoring(monitoring);
+                    Log.i("PatientLoadTask", "PatientMonitoring saved");
+                }
 
 
 
@@ -95,7 +107,10 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
         super.onPostExecute(patient);
         if(patient != null){
             SectionData.PATIENT = patient;
-            new PatientMonitoringLoadTask(alertDialog.getContext()).execute(patient);
+            Intent intent = new Intent(alertDialog.getContext(), MainActivity.class);
+            alertDialog.getContext().startActivity(intent);
+            alertDialog.dismiss();
+            //new PatientMonitoringLoadTask(alertDialog.getContext()).execute(patient);
         }
     }
 }
