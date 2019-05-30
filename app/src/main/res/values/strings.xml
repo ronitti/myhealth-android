@@ -26,6 +26,7 @@
     <string name="dialog_error_existing_sus">SUS number is already registered</string>
     <string name="dialog_btn_try_again">Try again</string>
     <string name="dialog_lbl_entering">Entering…</string>
+    <string name="dialog_lbl_firstuse">Saving in local…</string>
     <string name="dialog_error_existing_email">Email already registered</string>
     <string name="dialog_error_wrong_password">Password incorrect</string>
     <string name="dialog_error_email_not_registered">Email not registered</string>

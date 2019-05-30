@@ -7,13 +7,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.util.List;
+
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.data.Patient;
 import myhealth.ufscar.br.myhealth.data.User;
+import myhealth.ufscar.br.myhealth.data.collect.Register;
 import myhealth.ufscar.br.myhealth.database.PatientDAO;
+import myhealth.ufscar.br.myhealth.database.RegisterDAO;
 import myhealth.ufscar.br.myhealth.exception.NonRegisteredUserException;
 import myhealth.ufscar.br.myhealth.ui.MainActivity;
+import myhealth.ufscar.br.myhealth.usecases.CollectedDataLoad;
 import myhealth.ufscar.br.myhealth.usecases.PatientLoad;
 
 public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
@@ -58,9 +63,23 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
                 patient.setEmail(user[0].getEmail());
                 patient.setPassword(user[0].getPassword());
 
-
                 dao.save(patient);
+
                 Log.i("PatientLoadTask", "Patient was stored in local with id " + patient.getId());
+                Log.i("PatientLoadTask", "Loading registers on server ");
+                List<Register> registers =CollectedDataLoad.execute(patient);
+                if (registers != null && registers.size() > 0) {
+                    RegisterDAO registerDAO = new RegisterDAO(context);
+                    for (Register register: registers) {
+                        register.setId_patient(patient.getId());
+                        registerDAO.saveInLocal(register);
+                    }
+                }
+                Log.i("PatientLoadTask", "Registers saved");
+
+
+
+
 
             } catch (NonRegisteredUserException e) {
                 alertDialog.setMessage("Sorry! Try again later.");

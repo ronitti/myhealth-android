@@ -57,6 +57,35 @@ public class RegisterDAO {
         return gw.getDb().insert(TABLE_REGISTER,null,values) > 0;
     }
 
+    public boolean saveInLocal(Register register) {
+
+        ContentValues values = new ContentValues();
+
+        values.put("id_patient", register.getId_patient().toString());
+        values.put("datetime", register.getTimestamp().toString());
+        values.put("observation", register.getObservation());
+        values.put("sync", 1);
+
+        if (register instanceof Cardiac) {
+            Cardiac c = (Cardiac) register;
+            values.put("systolic", c.getSystolic());
+            values.put("diastolic", c.getDiastolic());
+            values.put("weight", c.getWeight());
+            values.put("heart_beats", c.getHeartBeats());
+            values.put("dcnt_type", NCD.CORONARY_ARTERY_DISEASE.getId());
+        } else if( register instanceof Glycemic) {
+            Glycemic g = (Glycemic) register;
+            values.put("glycemic_rate", g.getGlycemicRate());
+            values.put("dcnt_type", NCD.DIABETES.getId());
+        } else if (register instanceof Obesity) {
+            Obesity o = (Obesity) register;
+            values.put("weight", o.getWeight());
+            values.put("dcnt_type", NCD.OBESITY.getId());
+        }
+
+        return gw.getDb().insert(TABLE_REGISTER,null,values) > 0;
+    }
+
 
     public List<Pair<Integer, Register>> listRegisters(int patient) {
         List<Pair<Integer, Register>> list = new ArrayList<>();

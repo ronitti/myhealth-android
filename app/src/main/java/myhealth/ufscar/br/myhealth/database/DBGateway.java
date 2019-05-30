@@ -1,7 +1,9 @@
 package myhealth.ufscar.br.myhealth.database;
 
+
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+
+import net.sqlcipher.database.SQLiteDatabase;
 
 public class DBGateway {
 
@@ -10,8 +12,9 @@ public class DBGateway {
 
 
     private DBGateway(Context context) {
+        SQLiteDatabase.loadLibs(context);
         DbHelper helper = new DbHelper(context);
-        db = helper.getWritableDatabase();
+        db = helper.getWritableDatabase("myhealthkey");
     }
 
     public static DBGateway getInstance(Context context) {

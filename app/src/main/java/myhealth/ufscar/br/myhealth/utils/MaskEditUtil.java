@@ -2,6 +2,7 @@ package myhealth.ufscar.br.myhealth.utils;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 public abstract class MaskEditUtil {
@@ -57,6 +58,26 @@ public abstract class MaskEditUtil {
                 ediTxt.setSelection(mascara.length());
             }
         };
+    }
+
+
+    public static String maskString(String value, String mask ){
+        String toReturn = "";
+        int i = 0;
+        for (char c: mask.toCharArray()) {
+            if (c != '#') {
+                toReturn += c;
+                continue;
+            }
+            try {
+                toReturn += value.charAt(i);
+            } catch (Exception e) {
+                Log.e("MaskEditUtil", "Error on format string");
+            }
+            i++;
+        }
+
+        return toReturn;
     }
 
     public static String unmask(final String s) {

@@ -12,10 +12,12 @@ import android.widget.TextView;
 import myhealth.ufscar.br.myhealth.R;
 import myhealth.ufscar.br.myhealth.SectionData;
 import myhealth.ufscar.br.myhealth.tasks.AccessCodeTask;
+import myhealth.ufscar.br.myhealth.utils.MaskEditUtil;
 
 public class AccessCodeFragment extends Fragment implements AccessCodeTask.OnTaskInteraction, SwipeRefreshLayout.OnRefreshListener {
 
     private TextView txtAccessCode;
+    private TextView txtNumberSus;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     public AccessCodeFragment() {
@@ -36,6 +38,8 @@ public class AccessCodeFragment extends Fragment implements AccessCodeTask.OnTas
         swipeRefreshLayout = view.findViewById(R.id.layout_swipe_code);
         swipeRefreshLayout.setOnRefreshListener(this);
         txtAccessCode = view.findViewById(R.id.txt_access_code);
+        txtNumberSus = view.findViewById(R.id.txt_sus_number);
+        txtNumberSus.setText(MaskEditUtil.maskString(SectionData.PATIENT.getSusNumber(), MaskEditUtil.FORMAT_SUS_NUMBER));
         getAccessCode();
     }
 
