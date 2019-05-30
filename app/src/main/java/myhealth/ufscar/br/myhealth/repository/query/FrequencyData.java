@@ -2,7 +2,12 @@ package myhealth.ufscar.br.myhealth.repository.query;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+
 import myhealth.ufscar.br.myhealth.data.collect.frequency.Frequency;
+import myhealth.ufscar.br.myhealth.data.collect.frequency.FrequencyType;
 import myhealth.ufscar.br.myhealth.utils.DateTime;
 
 public class FrequencyData {
@@ -29,6 +34,30 @@ public class FrequencyData {
             this.hoursOfDay[i] = DateTime.SIMPLE_TIME_FORMAT.format(frequency.getHoursOfDay()[i]);
         }
         this.startDate = DateTime.SIMPLE_TIMESTAMP_FORMAT.format(frequency.getStartDate());
+    }
+
+    public Frequency toFrequency(){
+        Frequency frequency = new Frequency();
+        frequency.setFrequencyType(FrequencyType.values()[this.type]);
+        frequency.setDaysOfWeek(this.daysOfWeek);
+        frequency.setCustomEvery(this.customEvery);
+        frequency.setTimesADay(this.timesADay);
+
+        Date[] hours = new Date[this.hoursOfDay.length];
+        for(int i=0; i<this.hoursOfDay.length; i++) {
+            try {
+                hours[i] = DateTime.SIMPLE_TIME_FORMAT.parse(this.hoursOfDay[i]);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        frequency.setHoursOfDay(hours);
+        try {
+            frequency.setStartDate(DateTime.SIMPLE_TIMESTAMP_FORMAT.parse(this.startDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return frequency;
     }
 
     public Integer getType() {

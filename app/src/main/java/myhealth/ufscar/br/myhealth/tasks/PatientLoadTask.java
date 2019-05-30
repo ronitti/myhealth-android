@@ -95,9 +95,7 @@ public class PatientLoadTask extends AsyncTask<User, Integer, Patient> {
         super.onPostExecute(patient);
         if(patient != null){
             SectionData.PATIENT = patient;
-            Intent intent = new Intent(alertDialog.getContext(), MainActivity.class);
-            alertDialog.getContext().startActivity(intent);
-            alertDialog.dismiss();
+            new PatientMonitoringLoadTask(alertDialog.getContext()).execute(patient);
         }
     }
 }

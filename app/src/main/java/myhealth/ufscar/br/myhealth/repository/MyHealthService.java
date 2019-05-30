@@ -4,6 +4,7 @@ package myhealth.ufscar.br.myhealth.repository;
 import myhealth.ufscar.br.myhealth.repository.query.AccessCodeResponse;
 import myhealth.ufscar.br.myhealth.repository.query.FrequencyCreateResponse;
 import myhealth.ufscar.br.myhealth.repository.query.MonitoringCreateResponse;
+import myhealth.ufscar.br.myhealth.repository.query.MonitoringListResponse;
 import myhealth.ufscar.br.myhealth.repository.query.PatientCreateResponse;
 import myhealth.ufscar.br.myhealth.repository.query.PatientLoadResponse;
 import myhealth.ufscar.br.myhealth.repository.query.RegisterCreateResponse;
@@ -38,6 +39,9 @@ public interface MyHealthService {
 
     @POST("monitor/create")
     Call<MonitoringCreateResponse> createMonitor(@Body RequestData request);
+
+    @POST("monitor/listByPatient")
+    Call<MonitoringListResponse> listMonitorByPatient(@Body RequestData request);
 
 
     @POST("frequency/create")

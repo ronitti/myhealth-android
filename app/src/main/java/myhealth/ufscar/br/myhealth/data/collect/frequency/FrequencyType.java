@@ -13,4 +13,5 @@ public enum FrequencyType {
     public Integer getType() {
         return type;
     }
+
 }
