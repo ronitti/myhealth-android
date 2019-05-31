@@ -32,16 +32,14 @@ public class DCNTFrequencyDAO {
     public boolean savePatientMonitoring(PatientMonitoring monitoring) {
         Log.i("DCNTFrequencyDAO", "savePatientMonitoring - " + monitoring.toString());
         boolean f_saved = false;
-        for (int i = 0; i < monitoring.getNcds().length; i++) {
-            if (monitoring.getNcds()[i] == true){
-                NCD type = monitoring.getNcdFrequency().get(i).first;
-                Frequency frequency = monitoring.getNcdFrequency().get(i).second;
-                Log.i("DCNTFrequencyDAO", "Monitoring type - " + type.getType());
-                int id_type = (int) saveDCNT(monitoring.getPatient().getId(), type);
-                if (id_type > 0) {
-                    int id_frequency = (int) saveFrequency(id_type, frequency);
-                    f_saved = true;
-                }
+        for (Pair<NCD, Frequency> ncdmon: monitoring.getNcdFrequency()) {
+            NCD type = ncdmon.first;
+            Frequency frequency = ncdmon.second;
+            Log.i("DCNTFrequencyDAO", "Monitoring type - " + type.getType());
+            int id_type = (int) saveDCNT(monitoring.getPatient().getId(), type);
+            if (id_type > 0) {
+                int id_frequency = (int) saveFrequency(id_type, frequency);
+                f_saved = true;
             }
         }
         return f_saved;

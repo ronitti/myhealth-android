@@ -122,7 +122,7 @@ public class PatientMonitoringIntentService extends IntentService {
         go.setAction("action-go");
         PendingIntent goPI = PendingIntent.getActivity(this, 0, go, 0);
 
-        NotificationCompat.Action goAction = new NotificationCompat.Action(R.drawable.ic_input, "Colletar", goPI);
+        NotificationCompat.Action goAction = new NotificationCompat.Action(R.drawable.ic_menu_settings, "Colletar", goPI);
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
